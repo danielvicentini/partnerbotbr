@@ -1,0 +1,25 @@
+Projeto PartnerBotBR - Daniel Vicenti <dvicenti@cisco.co>
+
+Aplicativo chatbot que conversa com usuário do Webex Teams:
+-Este código roda servidor Web próprio para interceptar webhools do Webex trigados pelo usuário ao conversar com o Robô
+-inclui no código:
+  -funções Webex
+  -funções de acesso ao web server próprio para recuperar msgs de comandos
+  -lógica que processa respostas e devolve ao Webex teams em nome do robô
+  
+ Pacote feito para rodar no PaaS Heroku (heroku.com)
+ 
+ -requisitos:
+  Conta no Heroku.com e endereço heroku público (será usado pelo webexteams)
+  bot Webex teams e respectivo Token
+  
+  Usuário interage com o app Webex teams (phone ou pc) conversando com o respectico Robô
+  
+  Arquivos:
+  -leia.me : este arquivo
+  -partnerbot.py: app
+  -runtime.txt: para uso do heraku preparar ambiente python
+  -requirements.txt: para uso do heraku preparar ambiente pyhthon
+  -Procfile: descritivo para que o heroku entenda que o app também é o web server da aplicação
+  
+  -28 de fevereiro de 2019
