@@ -199,7 +199,7 @@ def webextalk(msg_id):
     # armazena o texto da msg enviada pelo usuario 
     # box e' o que o user escreveu
     box=dados[0]
-    box.lower()
+    box=box.lower()
     # armazena o id sala usada para devolver para mesma
     idsala=dados[1]
     # armazena email de quem enviou - nao utilizado ainda
