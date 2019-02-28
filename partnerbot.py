@@ -212,8 +212,6 @@ def webextalk(msg_id):
     sp=box.split(" ")
     box=sp[0]
 	
-    if len(sp)>2:
-        tema=sp[2]
 
     # chamadas de acordo com os parametros
 	
@@ -226,23 +224,20 @@ def webextalk(msg_id):
         msg=msg+"mais sobre Alertas: assine nossas newsletter de Produtos"
 
 
-    if tema!="" and "cliente" in tema:
+    if len(sp)>2:
+        tema=sp[2]
+        if tema!="" and "cliente" in tema:
             msg="Ferramenta para cliente. http://www.cisco.com"
-        
-    if tema!="" and "demo" in tema:
+        if tema!="" and "demo" in tema:
             msg="Ferramenta para demo. http://dcloud.cisco.com"
-		
-    if tema!="" and "demo" in tema:
+        if tema!="" and "demo" in tema:
             msg="Ferramenta para projetos. http://dcloud.cisco.com"
-
-    if tema!="" and "trein" in tema:
-    		msg="Ferramenta para treinamento. http://dcloud.cisco.com"
-    
-    if tema!="" and "suporte" in tema:
-    		msg="Ferramenta para tac. http://dcloud.cisco.com"
-
-    if tema!="" and "alert" in tema:
-    		msg="Ferramenta para alerta. http://dcloud.cisco.com"
+        if tema!="" and "trein" in tema:
+           msg="Ferramenta para treinamento. http://dcloud.cisco.com"
+        if tema!="" and "suporte" in tema:
+           msg="Ferramenta para tac. http://dcloud.cisco.com"
+        if tema!="" and "alert" in tema:
+           msg="Ferramenta para alerta. http://dcloud.cisco.com"
 
             
     # apos montagem da resposta em msg, envia a respectiva sala teams:
