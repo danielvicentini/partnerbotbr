@@ -217,8 +217,8 @@ def webextalk(msg_id):
 
     # chamadas de acordo com os parametros
 
-    if box =="pam" and len(sp)>2:
-        # primeiro checa se email e' da Cisco
+    if box == "pam" and len(sp)>2:
+        # primeiro checa se email e da Cisco
         email=usermail.split("@")
         # caso positivo ai faz a procura
         if email[1]=="cisco.com":
@@ -226,7 +226,7 @@ def webextalk(msg_id):
 
             #Rotina que faz a busca
 
-            filepath = 'basePAM.txt'  
+            filepath = "basePAM.txt"  
             with open(filepath) as fp:  
                 line = fp.readline()
                 while line:
@@ -239,7 +239,7 @@ def webextalk(msg_id):
                     
                     # Caso encontrado cria resposta
                     if pamprocurado in pname:
-                        msg=("Parceiro: "+pname+", PAM: "+ppam+"\nEmail: "+pmail+"@cisco.com\nTelefone: "+pphone+"\n")
+                        msg=msg+("Parceiro: "+pname+", PAM: "+ppam+"\nEmail: "+pmail+"@cisco.com\nTelefone: "+pphone+"\n")
                     
                     line = fp.readline()
 
