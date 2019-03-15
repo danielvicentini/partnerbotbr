@@ -217,12 +217,12 @@ def webextalk(msg_id):
 
     # chamadas de acordo com os parametros
 
-    if box == "pam" and len(sp)>2:
+    if box == "pam" and len(sp)>1:
         # primeiro checa se email e da Cisco
         email=usermail.split("@")
         # caso positivo ai faz a procura
         if email[1]=="cisco.com":
-            pamprocurado=sp[2]
+            pamprocurado=sp[1]
 
             #Rotina que faz a busca
 
