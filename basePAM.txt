@@ -4,7 +4,7 @@ Teltec;Florianopolis;Alessio;amarasca;11-99251-6256;1 Tier
 Sonda;Santana de Parnaiba;Alessio;amarasca;11-99251-6256;1 Tier
 Mtel;Barueri;Alessio;amarasca;11-99251-6256;1 Tier
 Capgemini;Barueri;Alessio;amarasca;11-99251-6256;1 Tier
-Cimcorp;Bras¡lia;Alessio;amarasca;11-99251-6256;1 Tier
+Cimcorp;Brasilia;Alessio;amarasca;11-99251-6256;1 Tier
 Resource IT;Sao Paulo;Alessio;amarasca;11-99251-6256;1 Tier
 Telemon;Sao Paulo;Alessio;amarasca;11-99251-6256;1 Tier
 Dimension Data;Sao Paulo;Tatai;mtatai;11-95771-6258;1 Tier
@@ -35,7 +35,7 @@ Think Digital;Sao Paulo;Rene Vasconcelos;revascon;11-99970-6207;2 Tier
 Virtual Office;Florianopolis;Rene Vasconcelos;revascon;11-99970-6207;2 Tier
 Layer2;Sao Paulo;Rene Vasconcelos;revascon;11-99970-6207;2 Tier
 By Seven;Joinville;Rene Vasconcelos;revascon;11-99970-6207;2 Tier
-Cobra (BBTS);Bras¡lia;Santa Rosa;asantaro;61-99924-7196;2 Tier
+Cobra (BBTS);Brasilia;Santa Rosa;asantaro;61-99924-7196;2 Tier
 DiferenTI;Recife;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Energy Telecom;Fortaleza;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Force One;Belo Horizonte;Santa Rosa;asantaro;61-99924-7196;2 Tier
@@ -45,10 +45,10 @@ NETSERVICE;Belo Horizonte;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Solutis;Salvador;Santa Rosa;asantaro;61-99924-7196;2 Tier
 SystemITS;Brasilia;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Algar Tech;Uberlandia;Santa Rosa;asantaro;61-99924-7196;2 Tier
-WiseIT Sistemas;Bras¡lia;Santa Rosa;asantaro;61-99924-7196;2 Tier
+WiseIT Sistemas;Brasilia;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Microcity;Belo Horizonte;Santa Rosa;asantaro;61-99924-7196;2 Tier
 Tecnoativa;Salvador;Santa Rosa;asantaro;61-99924-7196;2 Tier
-A. Telecom;SÆo Paulo/Brasilia;Santa Rosa;asantaro;61-99924-7196;2 Tier
+A. Telecom;Sao Paulo/Brasilia;Santa Rosa;asantaro;61-99924-7196;2 Tier
 AP Telecom;Rio de Janeiro;Theo Ferrari;therodri;11-96397-5091;2 Tier
 Gifara;Rio de Janeiro;Theo Ferrari;therodri;11-96397-5091;2 Tier
 InfraTI;Porto Alegre;Theo Ferrari;therodri;11-96397-5091;2 Tier
