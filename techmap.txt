@@ -71,7 +71,7 @@ SYSTEM ITS;PREMIER;Claudemiro;claudemiro@systemits.com;+55 61 3322-2222;;;;Publi
 TECNO-IT;SELECT;Ibrahim Mathias Boufleur;ibrahim@tecno-it.com.br;+55 69 3926-5105;;;;Commercial-Public Sector-;GO;CO
 TECNOATIVA;PREMIER;Marcelo Dantas;dantas@tecnoativa.com.br;+55 71 9 9265-0244;;;;Commercial-Public Sector-;BA;BRASIL
 TECNOSET(THINK DIGITAL);PREMIER;Andrea Cubos;andrea.cubos@tecnoset.com.br;+55 11 9 9408-9130;Andrea Cubos;andrea.cubos@tecnoset.com.br;+55 11 9 9408-9130;Commercial-;SP;SUL
-TEEVO;PREMIER;Òndie Scherer;endie.scherer@teevo.com.br;+55 54 3025-8000;;;;Commercial-;RS;SE
+TEEVO;PREMIER;Ondie Scherer;endie.scherer@teevo.com.br;+55 54 3025-8000;;;;Commercial-;RS;SE
 TELEMONT;GOLD;Fabio Cerqueira;fabio.cerqueira@telemont.com.br;+55 11 2348-4454 //  +55 11 9 5738-9111;Marcio Zalla;marcio.zalla@telemont.com.br;+55 11 2348-4461 // +55 11 9 5732-4736;Public Sector-Enterprise;SP;SE
 TELETEX;GOLD;Fernando Hamada;fernandoh@teletex.com.br;;Robson Ferezin;robson.ferezin@teletex.com.br;;Commercial-Public Sector-Enterprise;PR;CO/ SUL
 TELTEC;GOLD;Alexandre Moraes;amoraes@teltecsolutions.com.br;+55 61 99644-3253;Murilo Schulz;murilo@teltecsolutions.com.br;+55 48 3031-3488 // +55 48 9128-7249;Commercial-Public Sector-Enterprise;SC;CO/ SUL
