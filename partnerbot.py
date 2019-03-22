@@ -414,11 +414,11 @@ def procurapartner(parceiro):
     # Procura Detalhes do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
 
     msg = ""
-    
-    # Retorna erro se nome da pesquisa for muito pequeno
-    if len(parceiro)<3:
-        msg="Minimo 3 caracteres"
+
+    if len(parceiro)<2:
+        msg="Minimo 2 caracteres"
         return msg
+
 
     # Procura o PAM do parceiro
     # Base de dados
@@ -440,13 +440,18 @@ def procurapartner(parceiro):
                 fem_name=texto[5]
                 fem_mail=texto[6]
                 fem_phone=texto[7]
+                plob=texto[8]
+                pcover=texto[10]
                 ppam=procurapam(parceiro)
     
                 msg=msg+("\nParceiro: "+pname+"\nCertificacão: "+pcert)
                 msg=msg+("\nSEM: "+sem_name+"\nSEM Phone:"+sem_phone+"\nSEM email:"+sem_mail)
                 msg=msg+("\nFEM: "+fem_name+"\nFEM Phone:"+fem_phone+"\nFEM email:"+fem_mail)
+                msg=msg+("\nLoB:"+plob)
+                msg=msg+("\nCobertura:"+pcover)
                 msg=msg+("\nPAM:"+ppam)
-                    
+                return msg
+
             line = fp.readline()
                     
         # devolva negativa caso nada encontrado
@@ -584,7 +589,7 @@ if msg=="erro":
 
 # para teste formato="c" de console, para produção usar "w" web
 # ponha aqui a variavel para o formato
-formato="w"
+formato="c"
 
 
 # http server
