@@ -584,7 +584,7 @@ if msg=="erro":
 
 # para teste formato="c" de console, para produção usar "w" web
 # ponha aqui a variavel para o formato
-formato="c"
+formato="w"
 
 
 # http server
