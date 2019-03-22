@@ -616,19 +616,19 @@ class S(BaseHTTPRequestHandler):
         # trata mensagem quando nao e' gerada pelo bot. Se nao e' bot, entao usuario
         try:     
             if content['name']==webhook_name and content['data']['personEmail']!=botmail:
-	   	       # identifica id da mensagem
-               msg_id=(content['data']['id'])
-               # identifica dados da mensagem
-               webextalk=getwebexMsg(msg_id)
-               usermail=webextalk[2]
-               mensagem=webextalk[0]
-               sala=webextalk[1]
+	   	        # identifica id da mensagem
+                msg_id=(content['data']['id'])
+                # identifica dados da mensagem
+                webextalk=getwebexMsg(msg_id)
+                usermail=webextalk[2]
+                mensagem=webextalk[0]
+                sala=webextalk[1]
 
                # executa a logica
-               msg=logica(mensagem,usermail)
+                msg=logica(mensagem,usermail)
            
                # Envia resposta na sala apropriada
-               webexmsgRoomviaID(sala,msg)
+                webexmsgRoomviaID(sala,msg)
 
         except:
                print("POST nao reconhecido")
