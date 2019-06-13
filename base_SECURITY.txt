@@ -4,7 +4,7 @@ Parceiro;SE-Nome;SE-Telefone;SE-email;Competencias-SEC;Cisco Smart Licensing
 2S;Thiago Almeida;;thiago.almeida@2s.com.br;,,ISE,,,,UMB,,,,,AMP;
 2S;Aldo Melo;;aldo.melo@2s.com.br;,NGFW,ISE,STEALTH,ANYCONN,,,,ESA,WSA,CES,AMP;x
 3S NETWORKS;Marcus Ueda;;marcus.ueda@3snetworks.com.br;FJ Net,,,,,,,,,,,;
-ADDED;André Ortega;;andre.ortega@added.com.br;,NGFW,ISE,,ANYCONN,,UMB,CLOCK,ESA,WSA,CES,AMP;x
+ADDED;AndrÃ© Ortega;;andre.ortega@added.com.br;,NGFW,ISE,,ANYCONN,,UMB,CLOCK,ESA,WSA,CES,AMP;x
 ADDED;Paulo Hirakawa;;paulo.hirakawa@added.com.br;,NGFW,ISE,,ANYCONN,,UMB,,ESA,WSA,CES,AMP;x
 ALCATEIA;Gabriel Vianna;;gabriel.vianna@alcateia.com.br;,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,CLOCK,ESA,WSA,CES,AMP;x
 ATELECOM/A TELECOM;Rafael Speglis;;rafael.speglis@atelecom.com.br;FJ Vis,NGFW,ISE,STEALTH,,,UMB,,,,,AMP;
@@ -15,7 +15,7 @@ COMSTOR/WESTCON;Arthur Fernandes;;ArthurF@comstor-la.com;FJ Cloud,NGFW,ISE,,ANYC
 DIMENSIONDATA/DIDATA;Leandro Moretti;;leandro.moretti@dimensiondata.com;FJ Net,NGFW,ISE,STEALTH,ANYCONN,,UMB,,ESA,WSA,CES,AMP;
 DIMENSIONDATA/DIDATA;Luciane Batista;;aguinaldo.soares@dimensiondata.com;FJ Cloud,,,,,,,,,,,;
 DIMENSIONDATA/DIDATA;Aguinaldo Soares;;luciane.batista@dimensiondata.com;FJ Net,NGFW,ISE,,ANYCONN,,UMB,CLOCK,ESA,WSA,,AMP;
-DIMENSIONDATA/DIDATA;Rogério Moraes;;rogerio.moraes@dimensiondata.com;FJ Net,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,,ESA,WSA,CES,AMP;x
+DIMENSIONDATA/DIDATA;RogÃ©rio Moraes;;rogerio.moraes@dimensiondata.com;FJ Net,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,,ESA,WSA,CES,AMP;x
 DIMENSIONDATA/DIDATA;Henrique Oliveira;;henrique.oliveira@dimensiondata.com;FJ Net,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,CLOCK,ESA,WSA,CES,AMP;x
 DIMENSIONDATA/DIDATA;Pedro Godoy;;pedro.godoy@dimensiondata.com;FJ Cloud,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,CLOCK,ESA,WSA,CES,AMP;x
 DIMENSIONDATA/DIDATA;Edgard Batista;;edgard.batista@dimensiondata.com;,NGFW,ISE,,ANYCONN,,UMB,,,WSA,CES,;x
@@ -38,14 +38,14 @@ MTEL;Vagner Silva;;Vagner.silva@mtel.com.br;,NGFW,ISE,STEALTH,ANYCONN,,UMB,,,WSA
 N&DC;Rafael Selva;;rafael.selva@ndc.com.br;,,,,,,,,,,,;
 NETCONSULTING/NET CONSULTING;Alessandro Roberto;;alessandro.roberto@netconsulting.com.br;FJ Cloud,NGFW,ISE,,ANYCONN,,UMB,,ESA,WSA,CES,AMP;x
 NETCONSULTING/NET CONSULTING;Josiane Barros;;engenharia.redes@netconsulting.com.br;FJ Cloud,NGFW,ISE,STEALTH,ANYCONN,DUO,UMB,CLOCK,ESA,WSA,CES,AMP;x
-NETSERVICE;André Natali;;andre.natali@netservice.com.br.;,NGFW,ISE,,ANYCONN,,,,ESA,WSA,,AMP;x
+NETSERVICE;AndrÃ© Natali;;andre.natali@netservice.com.br.;,NGFW,ISE,,ANYCONN,,,,ESA,WSA,,AMP;x
 NEXA;Clesdiendio Alves;;clesdiendio@nexa.com.br;,NGFW,,,ANYCONN,,,,,,,;
-Planus;Moisés Araújo;;moises.araujo@planus.com.br;,,,,,,,,,,,;
+Planus;MoisÃ©s AraÃºjo;;moises.araujo@planus.com.br;,,,,,,,,,,,;
 RGK4 IT;Leonardo Rogoski;;leonardo.rogoski@rgk4it.com;,NGFW,ISE,,ANYCONN,,UMB,CLOCK,,,,AMP;
 SCANSOURCE/NETWORK1/N1;Vinicius Capelli;;vinicius.capelli@scansource/network1/n1.com.br;FJ Net,NGFW,,,,DUO,UMB,CLOCK,ESA,WSA,CES,AMP;
 SCANSOURCE/NETWORK1/N1;Hugo Hattori;;hugo.hattori@network1.com.br;,,,,,,,,,,,;
 SONDA;Marcelo Kiraly;;marcelo.kiraly@sonda.com;,NGFW,ISE,,ANYCONN,,UMB,CLOCK,ESA,WSA,CES,AMP;x
-TECNOSET/THINK DIGITAL;Vitório Urashima;;vitorio.urashima@tecnoset.com.br;,,,,,,,,,,,;
+TECNOSET/THINK DIGITAL;VitÃ³rio Urashima;;vitorio.urashima@tecnoset.com.br;,,,,,,,,,,,;
 TELETEX;Maiquel;;maiquel@teletex.com.br;,,,,,,,,,,,;
 TELETEX;Augusto Ziomkowski;;augusto.ziomkowski@teletex.com.br;,NGFW,ISE,,ANYCONN,,UMB,,ESA,WSA,CES,AMP;x
 TELETEX;Bruna Menezes;;bruna.menezes@teletex.com.br;,NGFW,ISE,,ANYCONN,,UMB,,ESA,WSA,CES,AMP;x
