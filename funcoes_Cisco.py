@@ -1,4 +1,5 @@
-﻿import json 
+# encoding utf-8
+import json 
 
 #########################################################
 ## FUNCOES API Suporte Cisco
@@ -70,13 +71,13 @@ def procurase(parceiro,arquitetura,especialidade):
     # Base de dados
 
     if "sec" in arquitetura:
-        filepath = "base_SECURITY.txt"
+        filepath = "baseSECURITY.txt"
     if "dna" in arquitetura or "en" in arquitetura:
-        filepath = "base_EN.txt"
+        filepath = "baseEN.txt"
     if "collab" in arquitetura:
-        filepath = "base_COLLAB.txt"
+        filepath = "baseCOLLAB.txt"
     if "dc" in arquitetura or "data" in arquitetura:
-        filepath = "base_DC.txt"
+        filepath = "baseDC.txt"
 
     # loop de pesquisa  
     with open(filepath) as fp:  
