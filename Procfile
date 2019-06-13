@@ -1,1 +1,1 @@
-web: python partnerbot.py
+web: python main.py
