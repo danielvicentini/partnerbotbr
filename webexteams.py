@@ -269,7 +269,7 @@ def webexmsgRoom(sala,msg):
     # mandando uma mensagem para a Sala caso encontrada
     if salawebex != None:
         try:
-            api.messages.create(salawebex,None,None,msg)
+            api.messages.create(salawebex,None,None,None,msg)
             resultado="ok"
         except:
             resultado="erro"
@@ -281,7 +281,7 @@ def webexmsgRoomviaID(sala,msg):
 
 	# Manda msg para 1 sala especifica informada via sala=roomID, nao retorna sucesso ou erro
     try:
-        api.messages.create(sala,None,None,msg)
+        api.messages.create(sala,None,None,None, msg)
         msg="ok"
     except:
         msg="erro"
