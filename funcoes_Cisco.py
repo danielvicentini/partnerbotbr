@@ -10,15 +10,16 @@ def help():
 
     # ajuda
     msg="""
-        Uso:
-        Procurar Manager do Parceiro: manager partner ***nome do parceiro*** OU manager partner ***nome do manager***
-        ---
-        Procurar PAM do parceiro: pam partner ***nome do parceiro***
-        ---
-        Procurar SE do parceiro: se ***dn|en|dna|sec|collab*** partner ***nome do parceiro***
-        ---
-        Detalhe do Parceiro: detail partner ***nome do parceiro***
-    """
+Uso:
+Procurar Manager do Parceiro: manager partner ***nome do parceiro*** OU
+manager partner ***nome do manager***
+---
+Procurar PAM do parceiro: pam partner ***nome do parceiro***
+---
+Procurar SE do parceiro: se ***dn|en|dna|sec|collab*** partner ***nome do parceiro***
+---
+Detalhe do Parceiro: detail partner ***nome do parceiro***
+"""
     
     return msg
 
