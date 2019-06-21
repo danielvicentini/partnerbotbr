@@ -1,4 +1,5 @@
-﻿from funcoes_Cisco import *
+﻿# -*- coding: utf-8 -*-
+from funcoes_Cisco import *
 from funcoes_Mais import *
 
 def logica(comando,usermail):
@@ -49,19 +50,24 @@ def logica(comando,usermail):
             if "se" in box or "systems engineer" in box:
                 if "sec" in box:
                     msg=procurase(parceiro,"sec","all")
-                if "dc" in box:
+                elif "dc" in box:
                     msg=procurase(parceiro,"dc","all")
-                if "en" in box or "dna" in box:
+                elif "en" in box or "dna" in box:
                     msg=procurase(parceiro,"dna","all")
-                if "col" in box:
+                elif "col" in box:
                     msg=procurase(parceiro,"collab","all")
+                else:
+                    msg="use: se ***dc|en|dna|sec|collab*** partner ***partner name***"
 
             # detalhe completo do parceiro
-            if "detalhe" in box:
+            if "detail" in box and parceiro!="":
                 msg=procurapam(parceiro)
                 msg=msg+procuramanager(parceiro)
         
     
+    if "help" in comando:
+        msg=help()
+
     if box=="eos":
        msg=SupportAPIHello()
 
@@ -81,5 +87,8 @@ def logica(comando,usermail):
     if len(sp)>2:
         tema=sp[2]
         msg=maissobre(tema)
-        
+
+    if msg=="" or msg==None:
+        msg="Use 'help' for help :-)"
+
     return msg

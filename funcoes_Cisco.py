@@ -1,10 +1,26 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import json 
 
 #########################################################
 ## FUNCOES API Suporte Cisco
 
 #########################################################
+
+def help():
+
+    # ajuda
+    msg="""
+        Uso:
+        Procurar Manager do Parceiro: manager partner ***nome do parceiro*** OU manager partner ***nome do manager***
+        ---
+        Procurar PAM do parceiro: pam partner ***nome do parceiro***
+        ---
+        Procurar SE do parceiro: se ***dn|en|dna|sec|collab*** partner ***nome do parceiro***
+        ---
+        Detalhe do Parceiro: detail partner ***nome do parceiro***
+    """
+    
+    return msg
 
 
 def getCiscoApiToken():
@@ -71,13 +87,13 @@ def procurase(parceiro,arquitetura,especialidade):
     # Base de dados
 
     if "sec" in arquitetura:
-        filepath = "baseSECURITY.txt"
+        filepath = "base_SECURITY.txt"
     if "dna" in arquitetura or "en" in arquitetura:
-        filepath = "baseEN.txt"
+        filepath = "base_EN.txt"
     if "collab" in arquitetura:
-        filepath = "baseCOLLAB.txt"
+        filepath = "base_COLLAB.txt"
     if "dc" in arquitetura or "data" in arquitetura:
-        filepath = "baseDC.txt"
+        filepath = "base_DC.txt"
 
     # loop de pesquisa  
     with open(filepath) as fp:  
@@ -89,14 +105,14 @@ def procurase(parceiro,arquitetura,especialidade):
             # Caso encontrado cria resposta
             if parceiro in pname.lower():
                 if count == 0:
-                    msg=("Parceiro:"+pname)
+                    msg=("**Partner:**"+pname)
 
                 sename=texto[1]
                 setel=texto[2]
                 semail=texto[3]
                 secomp=texto[4]
     
-                msg=msg+("\nSE: "+sename+": "+semail+" "+setel)
+                msg=msg+("\n**SE:** "+sename+": "+semail+" "+setel)
                 
                 #identifica competencias
                 compet=""
@@ -105,10 +121,11 @@ def procurase(parceiro,arquitetura,especialidade):
                         compet = compet + "'" + x + "'"
                 # imprime competencias somente se tiver pelo menos 1 declarada
                 if compet !="" and especialidade=="all":
-                    msg=msg+("\nCompetencies:"+compet)
+                    msg=msg+("\n**Competencies:**"+compet+"\n")
 
                 count=count+1
-                    
+                msg=msg+"\n---\n"
+
             line = fp.readline()
                     
         # devolva negativa caso nada encontrado
@@ -147,14 +164,14 @@ def procurapam(parceiro):
                 pmail=texto[3]
                 pphone=texto[4]
     
-                msg=msg+("\nPAM do Parceiro: "+pname+": "+ppam+" "+pmail+"@cisco.com "+pphone+" "+pcity+"\n")
+                msg=msg+("\n**PAM do Parceiro:** "+pname+": "+ppam+" "+pmail+"@cisco.com "+pphone+" "+pcity+"\n")
                 count=count+1
                     
             line = fp.readline()
                     
         # devolva negativa caso nada encontrado
         if count==0:
-            msg="\nNenhum resultado encontrado."
+            msg="\nPAM: Nenhum resultado encontrado.\n"
 
     return msg     
         
@@ -206,7 +223,7 @@ def procuramanager(parceiro):
                 sem_phone=texto[6]
                 
                 msg=msg+("\nManager:"+sem_name+" Title:"+sem_title+" "+sem_phone+" "+sem_mail)
-                msg=msg+("\nRegion:"+pregion+" City:"+pcity)
+                msg=msg+("\nRegion:"+pregion+" City:"+pcity+"\n---\n")
                 count = count + 1
                 
             line = fp.readline()
@@ -232,8 +249,8 @@ def procuramanager(parceiro):
                     sem_mail=texto[5]
                     sem_phone=texto[6]
                     
-                    msg=msg+("Manager:"+sem_name+" Parceiro:"+pname+" Title:"+sem_title+" "+sem_phone+" "+sem_mail)
-                    msg=msg+("\nRegion:"+pregion+" "+pcity+"\n")
+                    msg=msg+("**Manager:**"+sem_name+" **Partner:**"+pname+" **Title:**"+sem_title+" "+sem_phone+" "+sem_mail)
+                    msg=msg+("\n**Region:**"+pregion+" "+pcity+"\n---\n")
                     count = count + 1
                     
                 line = fp.readline()
@@ -242,7 +259,7 @@ def procuramanager(parceiro):
 
         # devolva negativa caso nada encontrado
         if count==0:
-            msg="Nenhum resultado encontrado.\n"
+            msg="Manager: Nenhum resultado encontrado.\n"
 
     return msg   
 
