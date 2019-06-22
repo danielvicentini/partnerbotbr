@@ -1,5 +1,4 @@
-﻿# -*- coding: utf-8 -*-
-from funcoes_Cisco import *
+﻿from funcoes_Cisco import *
 from funcoes_Mais import *
 
 def logica(comando,usermail):
@@ -29,7 +28,7 @@ def logica(comando,usermail):
         # remove espacos no final, caso existam
         parceiro=parceiro.rstrip()
 
-    # Para o caso de nenhum pedido coberto aqui
+    # DEPRECADO.Para o caso de nenhum pedido coberto aqui
     mais="\nEscreva 'mais' para saber suas opções"
     
     msg=""
@@ -41,26 +40,29 @@ def logica(comando,usermail):
     if autorizauser(usermail)==True:
         # funcoes relacionadas a parceiro
         if "partner" in comando:
+    
             # chama os managers do parceiro
             if "manager" in box:
                 msg=procuramanager(parceiro)
+    
             # pam do parceiro
             if "pam" in box:
                 msg=procurapam(parceiro)
+    
             if "se" in box or "systems engineer" in box:
                 if "sec" in box:
-                    msg=procurase(parceiro,"sec","all")
+                    msg=procurase(parceiro,"sec",box)
                 elif "dc" in box:
-                    msg=procurase(parceiro,"dc","all")
-                elif "en" in box or "dna" in box:
-                    msg=procurase(parceiro,"dna","all")
+                    msg=procurase(parceiro,"dc",box)
+                elif "dna" in box:
+                    msg=procurase(parceiro,"dna",box)
                 elif "col" in box:
-                    msg=procurase(parceiro,"collab","all")
+                    msg=procurase(parceiro,"collab",box)
                 else:
-                    msg="use: se ***dc|en|dna|sec|collab*** partner ***partner name***"
+                    msg="use: se ***dc|dna|sec|collab*** partner ***partner name***"
 
             # detalhe completo do parceiro
-            if "detail" in box and parceiro!="":
+            if "detail" in box and parceiro != "":
                 msg=procurapam(parceiro)
                 msg=msg+procuramanager(parceiro)
         
@@ -68,12 +70,15 @@ def logica(comando,usermail):
     if "help" in comando:
         msg=help()
 
+    # Funcoes para todos
+    # funcoes a corrigir
+
+    
     if box=="eos":
        msg=SupportAPIHello()
 
+    # Funcao mais a corrigir, pois mudei o split. Repensar nela
     
-    # Funcoes para todos
-
     if box == "mais" and len(sp)<2:
         msg="Descubra sobre nossas principais ferramentas para ajudá-lo. Escreva:\n"
         msg=msg+"mais sobre Cliente: conheça nosso programa semanal Quint@s Quinze\n"
@@ -83,7 +88,7 @@ def logica(comando,usermail):
         msg=msg+"mais sobre Suporte: Abertura de Chamados no Cisco TAC\n"
         msg=msg+"mais sobre Alertas: assine nossas newsletter de Produtos\n"
 
-
+    # Idem
     if len(sp)>2:
         tema=sp[2]
         msg=maissobre(tema)

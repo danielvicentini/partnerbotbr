@@ -1,5 +1,4 @@
-﻿# -*- coding: utf-8 -*-
-import json 
+﻿import json 
 
 #########################################################
 ## FUNCOES API Suporte Cisco
@@ -8,16 +7,19 @@ import json
 
 def help():
 
-    # ajuda
+    # Funcao ajuda deste bot
     msg="""
 Uso:
 Procurar Manager do Parceiro: manager partner ***nome do parceiro*** OU
 manager partner ***nome do manager***
----
+
+___
 Procurar PAM do parceiro: pam partner ***nome do parceiro***
----
-Procurar SE do parceiro: se ***dn|en|dna|sec|collab*** partner ***nome do parceiro***
----
+
+___
+Procurar SE do parceiro: se ***dna|dc|sec|collab*** partner ***nome do parceiro***
+
+___
 Detalhe do Parceiro: detail partner ***nome do parceiro***
 """
     
@@ -78,14 +80,27 @@ def procurase(parceiro,arquitetura,especialidade):
 
     # Procura SE do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
 
+    # encerra se parceiro for nenhum (por enquanto)
     if parceiro=="":
         return
+
+    # O 3o parametro desta funcao e' para entender especialidades do SE
+    # caso tenha alguma, esta e' identificada, do contrario e' all (todas)
+    hbox=especialidade.split(arquitetura)
+    parametro=""
+    
+    if len(hbox)>1:
+        parametro=hbox[1]
+        especialidade=parametro.lstrip()
+        especialidade=especialidade.rstrip()
+    
+    if especialidade=="":
+        especialidade = "all"
 
     msg = ""
     count=0
 
-    # Procura o PAM do parceiro
-    # Base de dados
+    # Base de dados de acordo com a arquitetura definida
 
     if "sec" in arquitetura:
         filepath = "base_SECURITY.txt"
@@ -96,44 +111,62 @@ def procurase(parceiro,arquitetura,especialidade):
     if "dc" in arquitetura or "data" in arquitetura:
         filepath = "base_DC.txt"
 
-    # loop de pesquisa  
-    with open(filepath) as fp:  
-        line = fp.readline()
-        while line:
-            texto=line.split(";")
-            pname=texto[0]
-                  
-            # Caso encontrado cria resposta
-            if parceiro in pname.lower():
-                if count == 0:
-                    msg=("**Partner:**"+pname)
+    # procura pessoa em parceiro especifico
+    # No futuro incluir pesquisa em todos os parceiros caso parceiro = all (todos)
 
-                sename=texto[1]
-                setel=texto[2]
-                semail=texto[3]
-                secomp=texto[4]
-    
-                msg=msg+("\n**SE:** "+sename+": "+semail+" "+setel)
-                
-                #identifica competencias
-                compet=""
-                for x in secomp.split(','):
-                    if x !="":
-                        compet = compet + "'" + x + "'"
-                # imprime competencias somente se tiver pelo menos 1 declarada
-                if compet !="" and especialidade=="all":
-                    msg=msg+("\n**Competencies:**"+compet+"\n")
+    if parceiro != "all":
 
-                count=count+1
-                msg=msg+"\n---\n"
-
+        # loop de pesquisa e criacao da resposta 
+        with open(filepath) as fp:  
             line = fp.readline()
+            while line:
+                texto=line.split(";")
+                pname=texto[0]
                     
-        # devolva negativa caso nada encontrado
-        if count==0:
-            msg="Nenhum resultado encontrado.\n"
+                # Caso encontrado o parceiro, investiga cada SE e competencias
+                if parceiro in pname.lower():
+                    if count == 0:
+                        msg=("**Partner:**"+pname)
 
-    return msg     
+                    sename=texto[1]
+                    setel=texto[2]
+                    semail=texto[3]
+                    secomp=texto[4]
+                                              
+                    #identifica competencias
+                    compet=""
+                    for x in secomp.split(','):
+                        if x !="":
+                            compet = compet + "'" + x + "'"
+
+                    # Seleciona se vai para impressao caso encontrado        
+
+                    # Se nenhuma competencia declarada, entao vale todas
+                    if especialidade == "all":
+                        
+                            msg=msg+("\n**SE:** "+sename+": "+semail+" "+setel)
+                            if compet != "":
+                                msg=msg+("\n**Competencies:**"+compet+"\n")
+                            msg=msg+"\n___\n"
+                            count=count+1
+                    
+                    # Se competencia declarada, entao somente aquele SE que a possui
+                    if especialidade != "all":
+                        if compet != "" and especialidade in compet.lower():
+                            msg=msg+("\n**SE:** "+sename+": "+semail+" "+setel)
+                            msg=msg+("\n**Competencies:**"+compet+"\n")
+                            msg=msg+"\n___\n"
+                            count=count+1
+
+                  
+
+                line = fp.readline()
+                        
+            # devolva negativa caso nada encontrado
+            if count==0:
+                msg="Nenhum resultado encontrado.\n"
+
+        return msg     
 
 
 def procurapam(parceiro):
@@ -223,8 +256,8 @@ def procuramanager(parceiro):
                 sem_mail=texto[5]
                 sem_phone=texto[6]
                 
-                msg=msg+("\nManager:"+sem_name+" Title:"+sem_title+" "+sem_phone+" "+sem_mail)
-                msg=msg+("\nRegion:"+pregion+" City:"+pcity+"\n---\n")
+                msg=msg+("\n**Manager:**"+sem_name+" **Title:**"+sem_title+" "+sem_phone+" "+sem_mail)
+                msg=msg+("\n**Region:**"+pregion+" **City:**"+pcity+"\n___\n")
                 count = count + 1
                 
             line = fp.readline()
@@ -251,7 +284,7 @@ def procuramanager(parceiro):
                     sem_phone=texto[6]
                     
                     msg=msg+("**Manager:**"+sem_name+" **Partner:**"+pname+" **Title:**"+sem_title+" "+sem_phone+" "+sem_mail)
-                    msg=msg+("\n**Region:**"+pregion+" "+pcity+"\n---\n")
+                    msg=msg+("\n**Region:**"+pregion+" "+pcity+"\n___\n")
                     count = count + 1
                     
                 line = fp.readline()

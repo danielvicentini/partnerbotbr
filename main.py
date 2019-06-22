@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from config import * 
 from webexteams_console_tools import webexconsole
 from webexteams import *
@@ -16,7 +14,7 @@ if msg=="erro":
     print ("Erro de Webhook")
 
 
-formato = "w"
+formato = "c"
 
 
 # http server
