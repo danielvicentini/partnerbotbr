@@ -1,12 +1,12 @@
-Nome do Parceiro;Cidade;Região;Título do Manager;Nome Manager;E-mail do Manager;Telefone Manager;PSE;PAM
+Nome do Parceiro;Cidade;Regiao;Titulo do Manager;Nome Manager;E-mail do Manager;Telefone Manager;PSE;PAM
 2M Digital;;;;Rodrigo Sena;rodrigo.sena@2mdigital.com.br;;Enio Alves;Rene Vasconcelos
 2R Datatel;Rio de Janeiro;Rio de Janeiro;;Robson Botelho;robson@2rdatatel.com.br;;Leonardo Ferreira;Theo Ferrari
 2S;Sao Paulo;;;Alexandre Zago;alexandre.zago@2s.com.br;;Enio Alves;Lenizi Nardomarino
-2S;Sao Paulo;;Gerente de Pré Vendas;Ricardo Wonrath;ricardo.w@2s.com.br;;Enio Alves;Lenizi Nardomarino
-3S Network;;;Gerente de Pós Vendas;Jonas Viana;jonas.viana@3snetworks.com.br;;Daniel Vicentini;Rene Vasconcelos
+2S;Sao Paulo;;Gerente de Pos Vendas;Ricardo Wonrath;ricardo.w@2s.com.br;;Enio Alves;Lenizi Nardomarino
+3S Network;;;Gerente de Pre Vendas;Jonas Viana;jonas.viana@3snetworks.com.br;;Daniel Vicentini;Rene Vasconcelos
 5F Solucoes;;;;Rogerio;rogerio@5f.com.br;;Enio Alves;Rene Vasconcelos
 9L Informatica;Rio de Janeiro;Rio de Janeiro;;Eduardo Ximenes;eximenes@9l.com.br;;Leonardo Ferreira;Theo Ferrari
-A. Telecom;São Paulo/Brasilia;CO/NO/NE - Sao Paulo;;Fernando Camillo;fernando.camillo@atelecom.com.br;;Daniel Kamache;Andre Santa Rosa
+A. Telecom;Sao Paulo/Brasilia;CO/NO/NE - Sao Paulo;;Fernando Camillo;fernando.camillo@atelecom.com.br;;Daniel Kamache;Andre Santa Rosa
 Added;Sao Paulo;;;Ricardo Okamura;ricardo.okamura@added.com.br;;Daniel Kamache;Marcelo Tatai
 Algar Tech;Uberlandia;MG;;;;;;
 Alinfo / ANS Distribuidora;;;;Pedro Leibel;pedro@alinfo.com.br;;Enio Alves;Rene Vasconcelos
@@ -17,13 +17,13 @@ B2on;;;;Tiago Santos;tiago.santos@b2on.com.br;;;
 Brascin;;;;Jorge Antunes;Jorge.Antunes@Brascin.com.br;;Daniel Vicentini;Rene Vasconcelos
 By Seven;;;;Heleno Fagundes;heleno.fagundes@byseven.com.br;;Daniel Vicentini;Rene Vasconcelos
 Camada Quatro;Salvador;CO/NO/NE;;Jose Roberto Gomes;roberto@camadaquatro.com.br;;Leonardo Ferreira;Andre Santa Rosa
-Capgemini;Barueri;;Gerente de Pré Vendas;Guilherme de Albuquerque Duarte;guilherme.duarte@capgemini.com;11 98372-8884;Leonardo Ferreira;Alessio Marasca
-Capgemini;Barueri;;Gerente de Pós Vendas;Carlos Morimoto;Carlos.morimoto@capgemini.com;11 9 8455-2524;Leonardo Ferreira;Alessio Marasca
+Capgemini;Barueri;;Gerente de Pre Vendas;Guilherme de Albuquerque Duarte;guilherme.duarte@capgemini.com;11 98372-8884;Leonardo Ferreira;Alessio Marasca
+Capgemini;Barueri;;Gerente de Pos Vendas;Carlos Morimoto;Carlos.morimoto@capgemini.com;11 9 8455-2524;Leonardo Ferreira;Alessio Marasca
 Carbon IT;Brasilia;CO/NO/NE;;Agner Vidal;agner.vidal@carbonit.com.br;;;
 Cimcorp;Sao Paulo;;;Romney Dutra;romney.dutra@grupocimcorp.com;11 2899.6060 / 11 9 8381.3064;Leonardo Ferreira;Alessio Marasca
 Cimcorp;Sao Paulo;;;Cinthia Leal;cinthia.leal@grupocimcorp.com;11 2124-2135 / 11 99159-8408;Leonardo Ferreira;Alessio Marasca
-Cimcorp;Brasília;;;Paulo Moreira;paulo.moreira@grupocimcorp.com;61 3316.9108 / 61 98123.9318;Leonardo Ferreira;Alessio Marasca
-Cobra (BBTS);Brasília;CO/NO/NE;;Jadson Santos;jadson.santos@bbtecno.com.br;;Daniel Kamache;Andre Santa Rosa
+Cimcorp;Brasilia;;;Paulo Moreira;paulo.moreira@grupocimcorp.com;61 3316.9108 / 61 98123.9318;Leonardo Ferreira;Alessio Marasca
+Cobra (BBTS);Brasilia;CO/NO/NE;;Jadson Santos;jadson.santos@bbtecno.com.br;;Daniel Kamache;Andre Santa Rosa
 Connecta Networking;Belem;CO/NO/NE;;Cassius Abelem;cassius@connectanet.com.br;;Daniel Kamache;Andre Santa Rosa
 Constel Tecnologia;;;;Vicente Ribeiro;Vicente.Ribeiro@consteltecnologia.com;;Daniel Vicentini;Rene Vasconcelos
 DFTI;Brasilia;CO/NO/NE;;Romulo Scherer;romulo.scherer@dfti.com.br;;;
@@ -31,12 +31,12 @@ DiferenTI;Recife;CO/NO/NE;;Bruno Almeida;bruno.almeida@diferenti.com.br;;Daniel 
 Digital Work;;;;Marcel Rampasso;marcel.rampasso@digitalwork.com.br;;Enio Alves;Rene Vasconcelos
 Dimension Data;Sao Paulo;;;Paulo Pinatti;paulo.pinatti@br.didata.com;;Daniel Kamache;Marcelo Tatai
 Dimension Data;Sao Paulo;;;Danilo Cardoso;danilo.cardoso@dimensiondata.com;;Daniel Kamache;Marcelo Tatai
-Dimension Data;Sao Paulo;;;Flávio Estevam;flavio.estevam@dimensiondata.com;;Daniel Kamache;Marcelo Tatai
-Dimension Data;Sao Paulo;;;Augusto Panachão;augusto.panachao@dimensiondata.com;;Daniel Kamache;Marcelo Tatai
-DLC Brasil (Bamo);Cuiaba;CO/NO/NE;;José Carlos de Lima;jose.carlos@dlcbrasil.com.br;;Daniel Kamache;Andre Santa Rosa
+Dimension Data;Sao Paulo;;;Flavio Estevam;flavio.estevam@dimensiondata.com;;Daniel Kamache;Marcelo Tatai
+Dimension Data;Sao Paulo;;;Augusto Panachao;augusto.panachao@dimensiondata.com;;Daniel Kamache;Marcelo Tatai
+DLC Brasil (Bamo);Cuiaba;CO/NO/NE;;Jose Carlos de Lima;jose.carlos@dlcbrasil.com.br;;Daniel Kamache;Andre Santa Rosa
 Energy Telecom;Fortaleza;CO/NO/NE;;Thiago Costa;thiago.costa@energytelecom.com.br;;Leonardo Ferreira;Andre Santa Rosa
 Ericsson;Sao Paulo;;;;fausto.okazaki@ericsson.com;;Daniel Kamache;Marcelo Tatai
-Exata TI;;;Gerente de Pré Vendas;Alexandre Duarte Rogoski;alexandre.rogoski@rgk4it.com;+55 44 99116-3154;Enio Alves;Rene Vasconcelos
+Exata TI;;;Gerente de Pre Vendas;Alexandre Duarte Rogoski;alexandre.rogoski@rgk4it.com;+55 44 99116-3154;Enio Alves;Rene Vasconcelos
 Force One;Belo Horizonte;MG;;Rafael Kelles;rafael.kelles@forceoneit.com;;Daniel Kamache;Andre Santa Rosa
 Gifara;Rio de Janeiro;Rio de Janeiro;;Leonardo Furtado;leofurtado@gifara.com.br;;Leonardo Ferreira;Theo Ferrari
 Go Ahead;Sao Paulo;;;;lrodrigues@goaheadit.com.br;;Enio Alves;Lenizi Nardomarino
@@ -45,37 +45,37 @@ Goldnet;;;;Gabriel Pincinato;Gabriel.Pincinato@goldnet.com.br;;Daniel Vicentini;
 Gruppen;Porto Alegre;RS;;Ciro Falavigna;ciro_falavigna@gruppen.com.br;;Daniel Vicentini;Theo Ferrari
 Harbor IT;;;;Andre Mulato;andre.mulato@harborit.com.br;;Daniel Vicentini;Rene Vasconcelos
 HX BRASIL INFORMATICA;Fortaleza;CO/NO/NE;;Hilano;hilano@hxbrasil.com.br;;Leonardo Ferreira;Andre Santa Rosa
-IBM;São Paulo;;Gerente de Pós Vendas;Alisson Chagas;alisson@br.ibm.com;11-99953-8649;Leonardo Ferreira;Alessio Marasca
-IBM;Sao Paulo;;Gerente de Pré Vendas;Carlos Pacola;cpacola@br.ibm.com;11-97184-5962;Leonardo Ferreira;Alessio Marasca
+IBM;Sao Paulo;;Gerente de Pos Vendas;Alisson Chagas;alisson@br.ibm.com;11-99953-8649;Leonardo Ferreira;Alessio Marasca
+IBM;Sao Paulo;;Gerente de Pre Vendas;Carlos Pacola;cpacola@br.ibm.com;11-97184-5962;Leonardo Ferreira;Alessio Marasca
 IBM;Sao Paulo;;Alliance Manager;Dinamara Zeppelini;mara.zeppelini@br.ibm.com;11-94224-3779 / 11-98552-2700;Leonardo Ferreira;Alessio Marasca
 IBM;Sao Paulo;;;Leonardo Pereira;lpereira@br.ibm.com;;Leonardo Ferreira;Alessio Marasca
 InfraTI;Porto Alegre;RS;;Lucas Campolina;lucas.campolina@infrati.com.br;;Daniel Vicentini;Theo Ferrari
 Innovo;Barueri;Sao Paulo;;Rubens Nascimento;rubens@innovotec.com.br;;Enio Alves;Theo Ferrari
 Interatell;Barueri;Sao Paulo;;Carlos Prates;cprates@interatell.com.br;;Daniel Kamache;Theo Ferrari
 IT-ONE;Belo Horizonte;MG;;Anderson Barbosa;anderson.barbosa@itone.com.br;;Daniel Kamache;Andre Santa Rosa
-Italtel;Rio;;Diretor de Operações;Tiago Ferreira;tiago.ferreira@italtel.com;21 98100-9378;Leonardo Ferreira;Alessio Marasca
-Italtel;Sao Paulo;;Gerente de Pré Vendas;Leandro Forcemo;leandro.forcemo@italtel.com;11 98444-4588;Leonardo Ferreira;Alessio Marasca
-Italtel;Rio;;Gerente de Pós Vendas;Flávio Amorim;flavio.amorim@italtel.com;21 98101-5948;Leonardo Ferreira;Alessio Marasca
+Italtel;Rio;;Diretor de Operacoes;Tiago Ferreira;tiago.ferreira@italtel.com;21 98100-9378;Leonardo Ferreira;Alessio Marasca
+Italtel;Sao Paulo;;Gerente de Pre Vendas;Leandro Forcemo;leandro.forcemo@italtel.com;11 98444-4588;Leonardo Ferreira;Alessio Marasca
+Italtel;Rio;;Gerente de Pos Vendas;Flavio Amorim;flavio.amorim@italtel.com;21 98101-5948;Leonardo Ferreira;Alessio Marasca
 Lanlink;Fortaleza;CO/NO/NE;;Raphael Salgado Ferreira Lustosa;raphael.salgado@lanlink.com.br;;Leonardo Ferreira;Andre Santa Rosa
 LB2 Consultoria;;;;Tiago Furlaneto;tiago.furlaneto@lb2.com.br;;Daniel Vicentini;Rene Vasconcelos
 Logicalis;Sao Paulo;;;Christian Maki;christian.maki@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
-Logicalis;Sao Paulo;;;Márcio Demétrio;marcio.demetrio@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
+Logicalis;Sao Paulo;;;Marcio Demetrio;marcio.demetrio@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
 Logicalis;Sao Paulo;;;Cintia Yoshimura;cintia.yoshimura@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
 Logicalis;Sao Paulo;;;Guilherme Montoanelli;Guilherme.Montoanelli@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
 Logicalis;Sao Paulo;;;Luiz Yamada;Luiz.Yamada@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
-Logicalis;Sao Paulo;;;Maurício Silva;mauricio.silva@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
+Logicalis;Sao Paulo;;;Mauricio Silva;mauricio.silva@la.logicalis.com;;Enio Alves;Lenizi Nardomarino
 Macrotec;Belo Horizonte;MG;;Matheus Silveira;matheus.silveira@macrotec.ind.br;;Daniel Kamache;Andre Santa Rosa
 Mega IT;Uberlandia;MG;;Cleber;cleber@megait.com.br;;Daniel Kamache;Andre Santa Rosa
 Microcity;Belo Horizonte;MG;;Paulo Coelho;pcoelho@microcity.com.br;;Daniel Kamache;Andre Santa Rosa
 Microware;Niteroi;Rio de Janeiro;;Sergio Santos;Sergio.Santos@microware.com.br;;Leonardo Ferreira;Theo Ferrari
 Microware;Niteroi;Rio de Janeiro;;Ricardo Galvao;Ricardo.Galvao@microware.com.br;;Leonardo Ferreira;Theo Ferrari
-MTEL;Barueri;;Gerente de Pré Vendas;Douglas Koja;douglas.koja@mtel.com.br;11 41348025 / 11 975444610;Leonardo Ferreira;Alessio Marasca
-MTEL;Barueri;;Gerente de Pós Vendas;Victor Nascimento;Victor.Nascimento@mtel.com.br;11 4134-8086 / 11 99755-8393;Leonardo Ferreira;Alessio Marasca
+MTEL;Barueri;;Gerente de Pre Vendas;Douglas Koja;douglas.koja@mtel.com.br;11 41348025 / 11 975444610;Leonardo Ferreira;Alessio Marasca
+MTEL;Barueri;;Gerente de Pos Vendas;Victor Nascimento;Victor.Nascimento@mtel.com.br;11 4134-8086 / 11 99755-8393;Leonardo Ferreira;Alessio Marasca
 Multirede;Sao Paulo;;;;tsantos@multirede.com.br;;Daniel Kamache;Marcelo Tatai
 N&DC - Systems Integrator;;;;Rene Rodrigues;rene.rodrigues@ndc.com.br;;Enio Alves;Rene Vasconcelos
 NAP IT;Porto Alegre;RS;;Ronaldo Barbieri;ronaldo.barbieri@napit.com.br;;Daniel Vicentini;Theo Ferrari
-NEC;Sao Paulo;;Gerente de Pré Vendas;Wagner Luiz Soares Pereira;wagnersp@nec.com.br;;Enio Alves;Lenizi Nardomarino
-NEC;Sao Paulo;;Gerente de Pré Vendas;Oscar Delorenzo Filho;oscardf@nec.com.br;1131517055;Enio Alves;Lenizi Nardomarino
+NEC;Sao Paulo;;Gerente de Pre Vendas;Wagner Luiz Soares Pereira;wagnersp@nec.com.br;;Enio Alves;Lenizi Nardomarino
+NEC;Sao Paulo;;Gerente de Pre Vendas;Oscar Delorenzo Filho;oscardf@nec.com.br;1131517055;Enio Alves;Lenizi Nardomarino
 Nereidas;Rio de Janeiro;Rio de Janeiro;;Jonatas Souza;jonatasmsouza@nereidas.com.br;;Leonardo Ferreira;Theo Ferrari
 Net Place;;;;Thiago;thiago@ntplace.com.br;;Daniel Vicentini;Rene Vasconcelos
 Net Telecom;Sao Bernardo;Sao Paulo;;Danilo Rodrigues;danilo@nettelecom.com.br;;Enio Alves;Theo Ferrari
@@ -95,8 +95,8 @@ Resource IT;Sao Paulo;;;;mauricio.luiz@resourceit.com;;Leonardo Ferreira;Alessio
 Resource IT;Sao Paulo;;;;anacarolina.gomes@resourceit.com;;Leonardo Ferreira;Alessio Marasca
 Solutis;Salvador;CO/NO/NE;;Marcelo Adaes;marcelo.adaes@solutis.com.br;;Leonardo Ferreira;Andre Santa Rosa
 Solve System;;;;Fabio Cardoso;fabio.cardoso@solvesystem.com.br;;Enio Alves;Rene Vasconcelos
-Sonda;Santana de Parnaiba;;Alliance Manager;José Moacyr;jose.moacyr@sonda.com;;Leonardo Ferreira;Alessio Marasca
-Sonda;Santana de Parnaiba;;Gerente de Pré Vendas;Bruno Iwaki;Bruno.iwaki@sonda.com;;Leonardo Ferreira;Alessio Marasca
+Sonda;Santana de Parnaiba;;Alliance Manager;Jose Moacyr;jose.moacyr@sonda.com;;Leonardo Ferreira;Alessio Marasca
+Sonda;Santana de Parnaiba;;Gerente de Pre Vendas;Bruno Iwaki;Bruno.iwaki@sonda.com;;Leonardo Ferreira;Alessio Marasca
 Sonda;Santana de Parnaiba;;;Maria Barbosa;maria.barbosa@sonda.com;;Leonardo Ferreira;Alessio Marasca
 SystemITS;Brasilia;CO/NO/NE;;Allan Froes;allan.froes@systemits.com;;Daniel Kamache;Andre Santa Rosa
 TechDec;Porto Alegre;RS;;Ruben Ariel;ruben.ariel@techdec.com.br;;Daniel Vicentini;Theo Ferrari
@@ -106,20 +106,20 @@ Teevo;Caxias do Sul;RS;;Robertson Kieling;robertson.kieling@teevo.com.br;;Daniel
 Teevo;Caxias do Sul;RS;;Caio DAgostini;caio.dagostini@teevo.com.br;;Daniel Vicentini;Theo Ferrari
 Telemon;Sao Paulo;;;;leonardo.saes@telemont.com.br;;;Alessio Marasca
 Teletex;Curitiba;;;;jose.sivek@teletex.com.br;;Enio Alves;Lenizi Nardomarino
-Teltec;Florianopolis;;Gerente de Pós Vendas;Murilos Schultz;murilo@teltecsolutions.com.br;48 99128-7249;Leonardo Ferreira;Alessio Marasca
+Teltec;Florianopolis;;Gerente de Pos Vendas;Murilos Schultz;murilo@teltecsolutions.com.br;48 99128-7249;Leonardo Ferreira;Alessio Marasca
 Teltec;Florianopolis;;;Marcus;marcus@teltecsolutions.com.br;;Leonardo Ferreira;Alessio Marasca
-Teltec;São Paulo;;;Cesar;cesar@teltecsolutions.com.br;;Leonardo Ferreira;Alessio Marasca
-Teltec;Brasília;;;Alexandre Moraes;amoraes@teltecsolutions.com.br;;Leonardo Ferreira;Alessio Marasca
-Teltec;Florianopolis;;Gerente de Pré Vendas;Leonardo Becker;leonardo@teltecsolutions.com.br;48 99167-2593;Leonardo Ferreira;Alessio Marasca
+Teltec;Sao Paulo;;;Cesar;cesar@teltecsolutions.com.br;;Leonardo Ferreira;Alessio Marasca
+Teltec;Brasilia;;;Alexandre Moraes;amoraes@teltecsolutions.com.br;;Leonardo Ferreira;Alessio Marasca
+Teltec;Florianopolis;;Gerente de Pre Vendas;Leonardo Becker;leonardo@teltecsolutions.com.br;48 99167-2593;Leonardo Ferreira;Alessio Marasca
 Ten Sistemas;Rio de Janeiro;Rio de Janeiro;;Bruno Lopes;brunod@ten.com.br;;Leonardo Ferreira;Theo Ferrari
 Ten Sistemas;Rio de Janeiro;Rio de Janeiro;;Marcos Valente;marcos@ten.com.br;;Leonardo Ferreira;Theo Ferrari
 Think Digital (Tecnoset);;;;Marcio Galvao;marcio.galvao@thinkdigital.com.br;;Enio Alves;Rene Vasconcelos
 Tracenet;Rio de Janeiro;Rio de Janeiro;;Francesco Pollola;francesco.pollola@tracenetsolutions.com;;Leonardo Ferreira;Theo Ferrari
-Virtual Office;Florinaópolis;;;Marcos Mafra;mafra@voffice.com.br;;Daniel Vicentini;Rene Vasconcelos
-Vita IT;Sao Paulo;;;Taígo Soares;tsoares@vitait.com;;Daniel Kamache;Marcelo Tatai
+Virtual Office;Florinaopolis;;;Marcos Mafra;mafra@voffice.com.br;;Daniel Vicentini;Rene Vasconcelos
+Vita IT;Sao Paulo;;;Taigo Soares;tsoares@vitait.com;;Daniel Kamache;Marcelo Tatai
 Vita IT;Sao Paulo;;;Paulo Uehara;puehara@vitait.com;;Daniel Kamache;Marcelo Tatai
 Vortex;Sao Paulo;;;Ricardo Perazzolo;ricardo.perazzolo@vortexti.com.br;;Enio Alves;Lenizi Nardomarino
-WiseIT Sistemas;Brasília;CO/NO/NE;;Robson Silva;robson@wiseit.inf.br;;Daniel Kamache;Andre Santa Rosa
+WiseIT Sistemas;Brasilia;CO/NO/NE;;Robson Silva;robson@wiseit.inf.br;;Daniel Kamache;Andre Santa Rosa
 Wittel;Sao Paulo;;;;marcelo.penteado@wittel.com.br;;Daniel Kamache;Marcelo Tatai
 Wittel;Sao Paulo;;;;henrique.moura@wittel.com.br;;Daniel Kamache;Marcelo Tatai
 Wittel;Sao Paulo;;;;rlaxe@wittel.com.br;;Daniel Kamache;Marcelo Tatai
