@@ -14,7 +14,7 @@ if msg=="erro":
     print ("Erro de Webhook")
 
 
-formato = "w"
+formato = "c"
 
 
 # http server
