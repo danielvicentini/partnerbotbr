@@ -103,13 +103,13 @@ def procurase(parceiro,arquitetura,especialidade):
     # Base de dados de acordo com a arquitetura definida
 
     if "sec" in arquitetura:
-        filepath = "base_SECURITY.txt"
+        filepath = "BASE_SECURITY.txt"
     if "dna" in arquitetura or "en" in arquitetura:
-        filepath = "base_EN.txt"
+        filepath = "BASE_EN.txt"
     if "collab" in arquitetura:
-        filepath = "base_COLLAB.txt"
+        filepath = "BASE_COLLAB.txt"
     if "dc" in arquitetura or "data" in arquitetura:
-        filepath = "base_DC.txt"
+        filepath = "BASE_DC.txt"
 
     # procura pessoa em parceiro especifico
     # No futuro incluir pesquisa em todos os parceiros caso parceiro = all (todos)
