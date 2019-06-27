@@ -143,14 +143,14 @@ def procurase(parceiro,arquitetura,especialidade):
                         
                             msg=msg+("**SE:** "+sename+": "+semail+" "+setel+"  \n")
                             if compet != "":
-                                msg=msg+("**Competencies:**"+compet+"  \n")
+                                msg=msg+("**Competencies:**"+compet+"  \n\n")
                             count=count+1
                     
                     # Se competencia declarada, entao somente aquele SE que a possui
                     if especialidade != "all":
                         if compet != "" and especialidade in compet.lower():
                             msg=msg+("**SE:** "+sename+": "+semail+" "+setel+"  \n")
-                            msg=msg+("**Competencies:**"+compet+"  \n")
+                            msg=msg+("**Competencies:**"+compet+"  \n\n")
                             count=count+1
 
                   
@@ -193,7 +193,7 @@ def procurapam(parceiro):
                 pmail=texto[3]
                 pphone=texto[4]
     
-                msg=msg+("**PAM do Parceiro:** "+pname+": "+ppam+" "+pmail+"@cisco.com "+pphone+" "+pcity+"  \n")
+                msg=msg+("**PAM do Parceiro:** "+pname+": "+ppam+" "+pmail+"@cisco.com "+pphone+" "+pcity+"  \n\n")
                 count=count+1
                     
             line = fp.readline()
@@ -252,7 +252,7 @@ def procuramanager(parceiro):
                 sem_phone=texto[6]
                 
                 msg=msg+("**Manager:**"+sem_name+" **Title:**"+sem_title+" "+sem_phone+" "+sem_mail+"  \n")
-                msg=msg+("**Region:**"+pregion+" **City:**"+pcity+"  \n")
+                msg=msg+("**Region:**"+pregion+" **City:**"+pcity+"  \n\n")
                 count = count + 1
                 
             line = fp.readline()
@@ -279,7 +279,7 @@ def procuramanager(parceiro):
                     sem_phone=texto[6]
                     
                     msg=msg+("**Manager:**"+sem_name+" **Partner:**"+pname+" **Title:**"+sem_title+" "+sem_phone+" "+sem_mail+"  \n")
-                    msg=msg+("**Region:**"+pregion+" "+pcity+"  \n")
+                    msg=msg+("**Region:**"+pregion+" "+pcity+"  \n\n")
                     count = count + 1
                     
                 line = fp.readline()
