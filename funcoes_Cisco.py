@@ -141,16 +141,16 @@ def procurase(parceiro,arquitetura,especialidade):
                     # Se nenhuma competencia declarada, entao vale todas
                     if especialidade == "all":
                         
-                            msg=msg+("**SE:** "+sename+": "+semail+" "+setel+"  \n")
+                            msg=msg+("  \n**SE:** "+sename+": "+semail+" "+setel+"  \n")
                             if compet != "":
-                                msg=msg+("**Competencies:**"+compet+"  \n\n")
+                                msg=msg+("**Competencies:**"+compet+"  \n")
                             count=count+1
                     
                     # Se competencia declarada, entao somente aquele SE que a possui
                     if especialidade != "all":
                         if compet != "" and especialidade in compet.lower():
-                            msg=msg+("**SE:** "+sename+": "+semail+" "+setel+"  \n")
-                            msg=msg+("**Competencies:**"+compet+"  \n\n")
+                            msg=msg+("  \n**SE:** "+sename+": "+semail+" "+setel+"  \n")
+                            msg=msg+("**Competencies:**"+compet+"  \n")
                             count=count+1
 
                   
