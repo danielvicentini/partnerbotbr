@@ -208,25 +208,25 @@ def calc_srv2tier(prime,diferenca):
 def formata_resp(a,b,c,d):
 
     msg=""
-    msg=msg+"1Tier:<"+str(a)
-    msg=msg+">Dist fatura direto:<"+str(b)
-    msg=msg+">Tier2 com ST:<"+str(c)
-    msg=msg+">Tier2 sem ST:<"+str(d)+">"
+    msg=msg+"**1Tier:**"+str(a)+" "
+    msg=msg+"**Dist fatura direto:**"+str(b)+" "
+    msg=msg+"**Tier2 com ST:**"+str(c)+" "
+    msg=msg+"**Tier2 sem ST:**"+str(d)+"  \n"
 
     return msg
 
 
 def prime_produto(prime,diferenca):
 
-    msg="\nProduto: desconto prime:"+str(prime)+"%\n"
-    msg=msg+"Caso parceiro prime é 1tier, descontos para demais concorrentes:\n"
+    msg="\nProduto: desconto prime:"+str(prime)+"%  \n"
+    msg=msg+"Caso parceiro prime é 1tier, descontos para demais concorrentes:  \n"
     msg=msg+calc_1tier(prime,diferenca)    
-    msg=msg+"\n\nCaso parceiro prime é 2tier:\n"
-    msg=msg+"Se parceiro prime é 2tier e fatura direto, descontos para demais concorrentes:\n"
+    msg=msg+"\n\nCaso parceiro prime é 2tier:  \n"
+    msg=msg+"Se parceiro prime é 2tier e fatura direto, descontos para demais concorrentes:  \n"
     msg=msg+calc_faturaDist(prime,diferenca)
-    msg=msg+"\nSe parceiro prime é 2tier e revende com ST, descontos para demais concorrentes:\n"
+    msg=msg+"\nSe parceiro prime é 2tier e revende com ST, descontos para demais concorrentes:  \n"
     msg=msg+calc_revComST(prime,diferenca)
-    msg=msg+"\nSe parceiro prime é 2tier e revende sem ST, descontos para demais concorrentes:\n"
+    msg=msg+"\nSe parceiro prime é 2tier e revende sem ST, descontos para demais concorrentes:  \n"
     msg=msg+calc_revSemST(prime,diferenca)
 
     return msg
@@ -234,16 +234,17 @@ def prime_produto(prime,diferenca):
 
 def prime_servico(prime,diferenca):
 
-    msg="\nServicos. Prime de "+str(prime)+"%\n"
-    msg=msg+"Caso parceiro prime é 1tier, descontos para demais concorrentes:\n"
+    msg="\nServicos. Prime de "+str(prime)+"%  \n"
+    msg=msg+"Caso parceiro prime é 1tier, descontos para demais concorrentes:  \n"
     msg=msg+calc_srv1tier(prime,diferenca)    
-    msg=msg+"\n\nCaso parceiro prime é 2tier, descontos para demais concorrentes:\n"
+    msg=msg+"\n\nCaso parceiro prime é 2tier, descontos para demais concorrentes:  \n"
     msg=msg+calc_srv2tier(prime,diferenca)
     
     return msg
 
 def testa_prime(prime,diferenca):
 
+    msg=""
     # testa se parametros de prime e diferenca estão dentro da equacao
     teste="ok"
 
@@ -254,21 +255,21 @@ def testa_prime(prime,diferenca):
         return msg
 
     return teste
-    
+
 # inicio
 
-msg=""
+#msg=""
 
-prime=80
-diferenca=30
+#prime=80
+#diferenca=30
 
-z=testa_prime(prime,diferenca)
+#z=testa_prime(prime,diferenca)
 
-if z=="ok":
-    msg=prime_produto(prime,diferenca)
-    print (msg)
-    msg=prime_servico(prime,diferenca)
-else:
-    msg="Parametros fora do padrao"
+#if z=="ok":
+#    msg=prime_produto(prime,diferenca)
+#    print (msg)
+#    msg=prime_servico(prime,diferenca)
+#else:
+#    msg="Parametros fora do padrao"
 
-print (msg)
+#print (msg)
