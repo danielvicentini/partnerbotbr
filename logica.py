@@ -103,7 +103,7 @@ def logica(comando,usermail):
 
         if "desconto prime" in comando:
 
-            correto="Correto: desconto prime <produto>ou<servico> <valor_prime> <valor_diferenca>. \nExemplo: desconto prime servico 65 30\n"
+            correto="**Uso Correto:** desconto prime ***produto*** ou ***servico*** ***valor_prime*** ***valor_diferenca***.  \n**Exemplo:** desconto prime servico 65 30  \n"
             
             # Transforma comando em parametros
             parametros=comando.split()
