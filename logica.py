@@ -1,5 +1,5 @@
-﻿from funcoes_Cisco import *
-from funcoes_Mais import *
+﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap
+from prime import testa_prime,prime_produto,prime_servico
 
 def logica(comando,usermail):
 
@@ -64,6 +64,7 @@ def logica(comando,usermail):
             #    else:
             #        msg="use: se ***dc|dna|sec|collab*** partner ***partner name***"
 
+
             if "se" in box:
                 if "sec" in box:
                     msg=smartse(parceiro,"sec",box)
@@ -76,6 +77,17 @@ def logica(comando,usermail):
                 else:
                     msg="use: se ***dc|dna|sec|collab*** partner ***partner name***"
 
+            # procura SE certificado Meraki
+            if "meraki" in box:
+                msg=smartmeraki(parceiro)
+
+            # procura SE de PS
+            if "seps" in box:
+                msg=smartps(parceiro)
+            
+            # procura dados DAP do parceiro
+            if "dap" in box:
+                msg=smartdap(parceiro)
 
             # detalhe completo do parceiro
             #if "detail" in box and parceiro != "":
@@ -86,9 +98,41 @@ def logica(comando,usermail):
                 msg=smartpam(parceiro)
                 msg=msg+smartmanager(parceiro)
 
-    
+        
+        # função prime - 16-7-2019
+
+        if "desconto prime" in comando:
+
+            correto="Correto: desconto prime <produto>ou<servico> <valor_prime> <valor_diferenca>. \nExemplo: desconto prime servico 65 30\n"
+            
+            # Transforma comando em parametros
+            parametros=comando.split()
+            # testa se tem o minimo de parametros
+            if len(parametros)==5:
+                tipo=parametros[2]
+                prime=int(parametros[3])
+                diferenca=int(parametros[4])
+
+                # primeiro testa se intervalo de prime e diferenca sao razoaveis
+                if testa_prime(prime,diferenca)=="ok":
+                    if "prod" in tipo:
+                        # executa calculo prime para produto
+                        msg=prime_produto(prime,diferenca)
+                    elif "serv" in tipo or "svc" in tipo:
+                        # executa calculo prime para servico
+                        msg=prime_servico(prime,diferenca)
+                    else:
+                        # do contrario mensagem de erro com a sintaxe correta
+                        msg=correto
+                else:
+                    # erro pois intervalos de prime e diferenca incorretos
+                    msg="Intervalos de prime e/ou diferenca incorretos."
+            else:
+                # mensagem de erro pois nao tem o minimo de parametros
+                msg=correto
+
     if "help" in comando:
-        msg=help()
+        msg=ajuda()
 
     # Funcoes para todos
 

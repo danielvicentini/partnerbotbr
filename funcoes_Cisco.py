@@ -14,6 +14,10 @@ def smartsheet(planilha):
     #token esta na variável de ambiente
     smartsheet_token=os.environ['SMART_TOKEN']
 
+    # devolve erro caso variavel de ambiente do token nao encontrada
+    if smartsheet_token=="":
+        return "erro"
+
     if "sec" in planilha:
         sheet="1219329522984836"
     elif "dna" in planilha:
@@ -26,6 +30,12 @@ def smartsheet(planilha):
         sheet="2210243842205572"
     elif "pam" in planilha:
         sheet="8872345856173956"
+    elif "meraki" in planilha:
+        sheet="6475499091322756"
+    elif "4PS" in planilha:
+        sheet="1400202272761732"
+    elif "dap" in planilha:
+        sheet="7330531516934020"
 
 
     #planilha de managers
@@ -71,7 +81,7 @@ def smartse(parceiro,arquitetura,especialidade):
     linhas = data['totalRowCount']
 
     #leva conteudo da planilha para variavel sheet
-    sheet=data['rows']
+    #sheet=data['rows']
 
     # loop para procurar o pam e imprime
 
@@ -104,6 +114,175 @@ def smartse(parceiro,arquitetura,especialidade):
 
     return msg
 
+
+def smartdap(parceiro):
+
+    # Procura infos DAP do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
+
+    if parceiro=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("dap")
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    # loop para procurar o pam e imprime
+
+    msg=""
+    count=2
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa a primeira celula da linha (parceiro)
+            celulaparceiro=linha['cells'][1]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            
+            if parceiro in celulaparceiro.lower():
+                msg=msg+formata_DAP(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+                    
+        # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="DAP: Nenhum resultado encontrado.  "
+
+
+    return msg
+
+
+
+def smartmeraki(parceiro):
+
+    # Procura SE Certificado Meraki do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
+
+    if parceiro=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("meraki")
+
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    #leva conteudo da planilha para variavel sheet
+    #sheet=data['rows']
+
+    # loop para procurar o pam e imprime
+
+    msg=""
+    count=2
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa a primeira celula da linha (parceiro)
+            celulaparceiro=linha['cells'][0]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            
+            if parceiro in celulaparceiro.lower():
+                msg=msg+formata_SE_Meraki(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+                    
+        # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="SE: Nenhum resultado encontrado.  "
+
+
+    return msg
+
+def smartps(parceiro):
+
+    # Procura SE de Public Sector do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
+
+    if parceiro=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("4PS")
+
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    # loop para procurar o pam e imprime
+
+    msg=""
+    count=2
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa a primeira celula da linha (parceiro)
+            celulaparceiro=linha['cells'][0]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            
+            if parceiro in celulaparceiro.lower():
+                msg=msg+formata_SE_PS(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+                    
+        # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="SE: Nenhum resultado encontrado.  "
+
+
+    return msg
+
+
+
 def smartmanager(parceiro):
 
     # Procura SEM do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
@@ -126,7 +305,7 @@ def smartmanager(parceiro):
     linhas = data['totalRowCount']
 
     #leva conteudo da planilha para variavel sheet
-    sheet=data['rows']
+    #sheet=data['rows']
 
     # loop para procurar o pam e imprime
 
@@ -179,7 +358,7 @@ def smartpam(parceiro):
     linhas = data['totalRowCount']
 
     #leva conteudo da planilha para variavel sheet
-    sheet=data['rows']
+    #sheet=data['rows']
 
     # loop para procurar o pam e imprime
 
@@ -264,6 +443,86 @@ def formata_SEM(dados):
 
 
     return msg
+
+
+def formata_SE_Meraki(dados):
+
+#monta linha do SE
+
+# zera variaveis
+    
+    msg=""
+    separceiro=""
+    senome=""
+    sesobrenome=""
+    semail=""
+    
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        separceiro=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        senome=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        sesobrenome=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        semail=dados['cells'][12]['value']
+    except:
+        pass
+ 
+    #monta a linha e imprime
+    
+    msg=msg+("**Certified SE:**"+senome+" "+sesobrenome+"** Partner:**"+separceiro+" "+semail+"  \n\n")
+   
+    return msg
+
+def formata_SE_PS(dados):
+
+#monta linha do SE PS
+
+# zera variaveis
+    
+    msg=""
+    separceiro=""
+    senome=""
+    selocalidade=""
+    semail=""
+    secompet=""
+    
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        separceiro=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        senome=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        semail=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        selocalidade=dados['cells'][3]['value']
+    except:
+        pass
+    try:
+        secompet=dados['cells'][4]['value']
+    except:
+        pass
+ 
+    #monta a linha e imprime
+    
+    msg=msg+("**Parceiro:**"+separceiro+" **Nome:**"+senome+" "+semail+" "+selocalidade+"  \n")
+    msg=msg+("**Arquiteturas que cobre:"+secompet+"  \n\n")
+   
+    return msg
+
 
 def formata_SE(dados):
 
@@ -365,6 +624,101 @@ def formata_PAM(dados):
     return msg
 
 
+def formata_DAP(dados):
+
+#monta linha do PAM
+
+# zera variaveis
+    
+    msg=""
+    dapparceiro=""
+    dapcert=""
+    dapdist=""
+    dappam=""
+    dapskills=list()
+    dapcontacts=list()
+  
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        dapparceiro=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        dapcert=dados['cells'][3]['value']
+    except:
+        pass
+    try:
+        dapdist=dados['cells'][4]['value']
+    except:
+        pass
+    try:
+        dappam=dados['cells'][7]['value']
+    except:
+        pass
+    
+    # monta lista de competencias do parceiro, caso tenha
+    try:
+        dapskills.append(dados['cells'][8]['value'])
+    except:
+        pass
+    try:
+        dapskills.append(dados['cells'][9]['value'])
+    except:
+        pass
+    try:
+        dapskills.append(dados['cells'][10]['value'])
+    except:
+        pass
+    try:
+        dapskills.append(dados['cells'][11]['value'])
+    except:
+        pass
+    try:
+        dapskills.append(dados['cells'][12]['value'])
+    except:
+        pass
+    try:
+        dapskills.append(dados['cells'][13]['value'])
+    except:
+        pass
+    # monta lista de contatos do dist, caso tenha    
+    try:
+        dapcontacts.append(dados['cells'][14]['value'])
+    except:
+        pass
+    try:
+        dapcontacts.append(dados['cells'][15]['value'])
+    except:
+        pass
+    try:
+        dapcontacts.append(dados['cells'][16]['value'])
+    except:
+        pass
+    
+    
+
+    #monta a linha e imprime
+    
+    # competencias
+    compet=""
+    for b in dapskills:
+        if b!="":
+            compet=compet+b+' '
+
+    # contatos Dist
+    contacts=""
+    for b in dapcontacts:
+        if b!="":
+            contacts=contacts+b+' '
+
+    msg=msg+("\n**Parceiro:** "+dapparceiro+": **Certificacao:**"+dapcert+"  \n")
+    msg=msg+("**PAM:** "+dappam+"** DAP do Distribuidor:**"+dapdist+"  \n")
+    msg=msg+("**Especializacoes:**"+compet+"  \n")
+    msg=msg+("**Contato no Dist:**"+contacts+"  \n")
+
+    return msg
+
+
 
 
 #########################################################
@@ -372,19 +726,23 @@ def formata_PAM(dados):
 
 #########################################################
 
-def help():
+def ajuda():
 
     # Funcao ajuda deste bot
     msg="""
 Forma de uso:  \n
-Procurar Manager do Parceiro: manager partner ***nome do parceiro*** OU  \n
-manager partner ***nome do manager***
-
-Procurar PAM do parceiro: pam partner ***nome do parceiro***
-
-Procurar SE do parceiro: se ***dna|dc|sec|collab*** partner ***nome do parceiro***
-
+Procurar Systems Engineer (SE) dos parceiros:  \n
+___
+Procurar SE do parceiro: se ***dna|dc|sec|collab*** partner ***nome do parceiro***  \n
+Procurar SE de Public Sector: seps partner ***nome do parceiro***  \n
+Procurar Certificado Meraki: meraki partner ***nome do parceiro***  \n
+Procurar Manager do Parceiro: manager partner ***nome do parceiro**  \n\n
+Procurar Ajuda para os Parceiros:  \n
+___
+Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
+Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
 Detalhe do Parceiro: detail partner ***nome do parceiro***
+
 """
     
     return msg
