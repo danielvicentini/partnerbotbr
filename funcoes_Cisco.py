@@ -36,6 +36,8 @@ def smartsheet(planilha):
         sheet="1400202272761732"
     elif "dap" in planilha:
         sheet="7330531516934020"
+    elif "solution" in planilha:
+        sheet="6200566423545732"
 
 
     #planilha de managers
@@ -60,6 +62,13 @@ def smartsheet(planilha):
         return "erro"
 
     return json_res
+
+
+#########################################################
+## FUNCOES de Busca de informacoes
+
+#########################################################
+
 
 def smartse(parceiro,arquitetura,especialidade):
 
@@ -114,11 +123,89 @@ def smartse(parceiro,arquitetura,especialidade):
 
     return msg
 
+def smartsolution(parceiro):
+
+    # Procura parceiros de solucao (por vertical, depois por nome de parceiro), retorna msg com dados ou resultado negativo caso nao encontrado
+    # Daniel - 23.7.19
+
+    if parceiro=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("solution")
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    # loop para procurar por vertical
+
+    msg=""
+    count=2
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa a segunda celula da linha (vertical)
+            vertical=linha['cells'][1]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            
+            if parceiro in vertical.lower():
+                msg=msg+formata_solution(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+    # procura por parceiro Cisco caso nenhuma solucao vertical encontrada
+    if encontrado==0:
+        count=2
+        while (count<linhas):
+
+            # valida 1 linha por vez
+            linha=data['rows'][count]
+
+            try:
+                # acessa a primeira celula da linha (parceiro)
+                vertical=linha['cells'][0]['value']
+                
+                # gera a linha formatada caso parceiro encontrado
+                
+                if parceiro in vertical.lower():
+                    msg=msg+formata_solution(linha)
+                    encontrado=encontrado+1
+            except:
+                pass
+            count=count+1
+
+                                        
+    
+    
+    # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="Solution Partner: Nenhum resultado encontrado.  "
+
+
+    return msg
+
+
 
 def smartdap(parceiro):
 
     # Procura infos DAP do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
-
+    # 19.7.2019
     if parceiro=="":
         return
 
@@ -173,6 +260,7 @@ def smartdap(parceiro):
 def smartmeraki(parceiro):
 
     # Procura SE Certificado Meraki do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
+    # 19.7.2019
 
     if parceiro=="":
         return
@@ -390,6 +478,11 @@ def smartpam(parceiro):
     return msg
 
 
+#########################################################
+## FUNCOES de formatacao de texto para saida Webexteams
+
+#########################################################
+
 
 def formata_SEM(dados):
 
@@ -520,6 +613,44 @@ def formata_SE_PS(dados):
     
     msg=msg+("**Parceiro:**"+separceiro+" **Nome:**"+senome+" "+semail+" "+selocalidade+"  \n")
     msg=msg+("**Arquiteturas que cobre:"+secompet+"  \n\n")
+   
+    return msg
+
+def formata_solution(dados):
+
+#monta linha de parceiros de solucao
+
+# zera variaveis
+    
+    msg=""
+    vparceiro=""
+    vertical=""
+    vsolution=""
+    vdescription=""
+    
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        vparceiro=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        vertical=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        vsolution=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        vdescription=dados['cells'][3]['value']
+    except:
+        pass
+    
+    #monta a linha e imprime
+    
+    msg=msg+("**Parceiro:**"+vparceiro+" **Vertical:**"+vertical+"  \n")
+    msg=msg+("**Nome da oferta:** "+vsolution+"  \n")
+    msg=msg+("**Descrição da oferta:"+vdescription+"  \n\n")
    
     return msg
 
@@ -740,6 +871,7 @@ Procurar Manager do Parceiro: manager partner ***nome do parceiro**  \n\n
 Procurar Ajuda para os Parceiros:  \n
 ___
 Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
+Procura Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
 Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
 Detalhe do Parceiro: detail partner ***nome do parceiro***
 
@@ -795,6 +927,7 @@ def SupportAPIHello():
 
 #########################################################
 ## FUNCOES TECHMAPPING CISCO BRASIL
+## Funcoes abaixo nao mais utilizadas apos migracao da base para Smartsheet
 
 #########################################################
 

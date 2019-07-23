@@ -1,4 +1,4 @@
-﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap
+﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution
 from prime import testa_prime,prime_produto,prime_servico
 
 def logica(comando,usermail):
@@ -89,10 +89,9 @@ def logica(comando,usermail):
             if "dap" in box:
                 msg=smartdap(parceiro)
 
-            # detalhe completo do parceiro
-            #if "detail" in box and parceiro != "":
-            #    msg=procurapam(parceiro)
-            #    msg=msg+procuramanager(parceiro)
+            # procura parceiro por solucao - J. Sardinha - 23.7.19
+            if "solu" in box:
+                msg=smartsolution(parceiro)
 
             if "detail" in box and parceiro != "":
                 msg=smartpam(parceiro)
