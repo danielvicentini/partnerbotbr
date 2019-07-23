@@ -650,7 +650,7 @@ def formata_solution(dados):
     
     msg=msg+("**Parceiro:**"+vparceiro+" **Vertical:**"+vertical+"  \n")
     msg=msg+("**Nome da oferta:** "+vsolution+"  \n")
-    msg=msg+("**Descrição da oferta:"+vdescription+"  \n\n")
+    msg=msg+("**Descrição da oferta:**"+vdescription+"  \n\n")
    
     return msg
 
