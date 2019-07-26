@@ -1,5 +1,6 @@
 ﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda
 from prime import testa_prime,prime_produto,prime_servico
+from webexteams import getwebexRoomID, webexmsgRoomviaID
 
 def logica(comando,usermail):
 
@@ -122,8 +123,15 @@ def logica(comando,usermail):
     # Funcoes para todos
 
     
-
     if msg=="" or msg==None:
         msg="Use 'help' for help :-)"
+
+    # 26-7-19
+    # tenta logar tudo na sala "log do partnerbot"
+    try:
+        log="user:"+usermail+" comando:"+comando
+        webexmsgRoomviaID(getwebexRoomID("log do partnerbot"),log)
+    except:
+        pass
 
     return msg
