@@ -149,7 +149,7 @@ def smartsolution(parceiro):
     # loop para procurar por vertical
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -172,7 +172,7 @@ def smartsolution(parceiro):
 
     # procura por parceiro Cisco caso nenhuma solucao vertical encontrada
     if encontrado==0:
-        count=2
+        count=1
         while (count<linhas):
 
             # valida 1 linha por vez
@@ -226,7 +226,7 @@ def smartagenda(quarter):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -282,7 +282,7 @@ def smartdap(parceiro):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -342,7 +342,7 @@ def smartmeraki(parceiro):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -396,7 +396,7 @@ def smartps(parceiro):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -455,7 +455,7 @@ def smartmanager(parceiro):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
@@ -508,7 +508,7 @@ def smartpam(parceiro):
     # loop para procurar o pam e imprime
 
     msg=""
-    count=2
+    count=1
     encontrado=0
     
     while (count<linhas):
