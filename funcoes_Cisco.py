@@ -850,7 +850,7 @@ def formata_agenda(dados):
     
     #monta a linha e imprime
     
-    msg=msg+("**Quarter:** "+quarter+": "+mes+": "+dia_programado+" \n**Evento**: "+evento+" **Local:** "+localidade+"  \n\n")
+    msg=msg+("**Quarter:** "+quarter+": "+mes+": "+dia_programado+"  \n\n**Evento**: "+evento+" **Local:** "+localidade+"  \n\n")
  
 
     return msg
