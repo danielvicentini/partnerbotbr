@@ -1,4 +1,4 @@
-﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution
+﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda
 from prime import testa_prime,prime_produto,prime_servico
 
 def logica(comando,usermail):
@@ -90,8 +90,13 @@ def logica(comando,usermail):
                 msg=smartdap(parceiro)
 
             # procura parceiro por solucao - J. Sardinha - 23.7.19
-            if "solu" in box:
+            if "solution" in box:
                 msg=smartsolution(parceiro)
+
+            # procura agenda para parceiros - 26.7.19
+            if "agenda" in box:
+                # a variavel parceiro aqui na verdade leva o quarter procurado exemplo: q1
+                msg=smartagenda(parceiro)
 
             if "detail" in box and parceiro != "":
                 msg=smartpam(parceiro)

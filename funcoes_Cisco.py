@@ -38,6 +38,8 @@ def smartsheet(planilha):
         sheet="7330531516934020"
     elif "solution" in planilha:
         sheet="6200566423545732"
+    elif "agenda" in planilha:
+        sheet="7416587629160324"
 
 
     #planilha de managers
@@ -199,6 +201,61 @@ def smartsolution(parceiro):
 
 
     return msg
+
+
+def smartagenda(quarter):
+
+    # Procura agenda de eventos
+    # 26.7.2019
+    if quarter=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("agenda")
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    # loop para procurar o pam e imprime
+
+    msg=""
+    count=2
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa a primeira celula da linha (parceiro)
+            linha_agenda=linha['cells'][0]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            
+            if quarter in linha_agenda.lower():
+                msg=msg+formata_agenda(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+                    
+        # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="Agenda: Nenhum resultado encontrado.  "
+
+
+    return msg
+
 
 
 
@@ -755,6 +812,51 @@ def formata_PAM(dados):
     return msg
 
 
+def formata_agenda(dados):
+
+#agenda de eventos para parceiros
+#26-07-19
+
+# zera variaveis
+    
+    msg=""
+    quarter=""
+    mes=""
+    evento=""
+    dia_programado=""
+    localidade=""
+  
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        quarter=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        mes=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        evento=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        dia_programado=dados['cells'][3]['value']
+    except:
+        pass
+    try:
+        localidade=dados['cells'][4]['value']
+    except:
+        pass
+    
+    #monta a linha e imprime
+    
+    msg=msg+("**Quarter:** "+quarter+": "+mes+": "+dia_programado+" \n**Evento**: "+evento+" **Local:** "+localidade+"  \n\n")
+ 
+
+    return msg
+
+
+
 def formata_DAP(dados):
 
 #monta linha do PAM
@@ -862,19 +964,21 @@ def ajuda():
     # Funcao ajuda deste bot
     msg="""
 Forma de uso:  \n
-Procurar Systems Engineer (SE) dos parceiros:  \n
+**Procurar Systems Engineer (SE) dos parceiros:**  \n
 ___
 Procurar SE do parceiro: se ***dna|dc|sec|collab*** partner ***nome do parceiro***  \n
 Procurar SE de Public Sector: seps partner ***nome do parceiro***  \n
 Procurar Certificado Meraki: meraki partner ***nome do parceiro***  \n
 Procurar Manager do Parceiro: manager partner ***nome do parceiro**  \n\n
-Procurar Ajuda para os Parceiros:  \n
+**Procurar Ajuda sobre os Parceiros:**  \n
 ___
 Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
 Procura Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
 Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
-Detalhe do Parceiro: detail partner ***nome do parceiro***
+Detalhe do Parceiro: detail partner ***nome do parceiro***  \n\n
+**Procurar Ajuda para Parceiros:**  \n
 
+Agenda para parceiros: agenda partner ***quarter***  \n
 """
     
     return msg
