@@ -40,7 +40,14 @@ def smartsheet(planilha):
         sheet="6200566423545732"
     elif "agenda" in planilha:
         sheet="7416587629160324"
-
+    elif "estoque_Comstor" in planilha:
+        sheet="6726686227097476"
+    elif "estoque_Scan" in planilha:
+        sheet="3981179922737028"
+    elif "estoque_Ingram" in planilha:
+        sheet="5371646502788"
+    elif "estoque_Alca" in planilha:
+        sheet="4103938677991300"
 
     #planilha de managers
     url = "https://api.smartsheet.com/2.0/sheets/"+sheet
@@ -124,6 +131,68 @@ def smartse(parceiro,arquitetura,especialidade):
 
 
     return msg
+
+
+def smartestoque(pid):
+
+    # Procura PID de produts  no estoque dos distribuidores
+    # Daniel - 12-8-19
+
+    if pid=="":
+        return
+
+    # todas as planilhas de estoque disponiveis
+    estoques=("estoque_Alca","estoque_Comstor","estoque_Scan","estoque_Ingram")
+
+    msg=""
+    encontrado=0
+
+    for Dist in estoques:
+
+        # planilha do smartsheet
+        # chama a funcao que busca planilha no smartsheet e devolve como JSON
+        data = smartsheet(Dist)
+
+        # aborta caso nao tenha sido possivel acessar smartsheet
+        if data=="erro":
+            msg="Erro de acesso\n"
+            return msg
+
+        # quantas linhas tem a planilha
+        linhas = data['totalRowCount']
+
+        # loop para procurar o pid
+
+        msg=msg+("  \n**Distribuidor:**"+Dist+"  \n")
+
+        count=0
+
+
+        while (count<linhas):
+
+            # valida 1 linha por vez
+            linha=data['rows'][count]
+
+            # acessa a primeira celula da linha do inventario do Dist
+            pn_dist=linha['cells'][0]['value']
+            
+            # gera a linha formatada caso parceiro encontrado
+            if pid in pn_dist:
+                msg=msg+formata_Estoque(linha)
+                encontrado=encontrado+1
+            
+            count=count+1
+
+                        
+        # devolva negativa caso nada encontrado
+        if encontrado==0:
+            msg=msg+"Estoque: Nenhum resultado encontrado.  "
+
+
+
+    return msg
+
+
 
 def smartsolution(parceiro):
 
@@ -593,6 +662,33 @@ def formata_SEM(dados):
 
 
     return msg
+
+def formata_Estoque(dados):
+
+#monta linha do Estoque - DV 12-8-19
+
+# zera variaveis
+    
+    msg=""
+    pid_name=""
+    pid_qtde=0
+
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        pid_name=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        pid_qtde=dados['cells'][7]['value']
+    except:
+        pass
+    
+    #monta a linha e imprime
+    
+    if pid_qtde>0: msg=msg+("**PID:**"+pid_name+" **Qty:**"+str(int(pid_qtde))+"  \n")
+    
+    return msg
+
 
 
 def formata_SE_Meraki(dados):

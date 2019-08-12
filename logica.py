@@ -1,4 +1,4 @@
-﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda
+﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque
 from prime import testa_prime,prime_produto,prime_servico
 from webexteams import getwebexRoomID, webexmsgRoomviaID
 
@@ -83,7 +83,12 @@ def logica(comando,usermail):
             if "detail" in box and parceiro != "":
                 msg=smartpam(parceiro)
                 msg=msg+smartmanager(parceiro)
-
+                msg=msg+smartse(parceiro,"dna",box)
+                msg=msg+smartse(parceiro,"collab",box)
+                msg=msg+smartse(parceiro,"dc",box)
+                msg=msg+smartse(parceiro,"sec",box)
+                
+                
         
         # função prime - 16-7-2019
 
@@ -116,6 +121,12 @@ def logica(comando,usermail):
             else:
                 # mensagem de erro pois nao tem o minimo de parametros
                 msg=correto
+
+    if "estoque" in comando:
+        # Busca PID em estoque - segundo parametro deve ser PID
+        # Transforma comando em parametros
+        parametros=comando.split(" ")
+        if len(parametros)>1: msg=smartestoque(parametros[1].upper())
 
     if "help" in comando:
         msg=ajuda()
