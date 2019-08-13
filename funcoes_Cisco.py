@@ -160,13 +160,14 @@ def smartestoque(pid):
 
         # quantas linhas tem a planilha
         linhas = data['totalRowCount']
+        data_modificacao = data['modifiedAt']
 
-        # loop para procurar o pid
-
-        msg=msg+("  \n**Distribuidor:**"+Dist+"  \n")
+        # formata nome do Distribuidir e a data de atualizacao da planilha (pega a data e elimina a hora)
+        msg=msg+("  \n**Distribuidor:**"+Dist+" **Atualizado:**"+data_modificacao.split("T")[0]+"  \n")
 
         count=0
 
+        # loop para procurar o pid
 
         while (count<linhas):
 
