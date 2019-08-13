@@ -1065,16 +1065,17 @@ ___
 Procurar SE do parceiro: se ***dna|dc|sec|collab*** partner ***nome do parceiro***  \n
 Procurar SE de Public Sector: seps partner ***nome do parceiro***  \n
 Procurar Certificado Meraki: meraki partner ***nome do parceiro***  \n
-Procurar Manager do Parceiro: manager partner ***nome do parceiro**  \n\n
+Procurar Manager do Parceiro: manager partner ***nome do parceiro***  \n\n
 **Procurar Ajuda sobre os Parceiros:**  \n
-___
+
 Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
-Procura Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
+Procurar Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
 Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
 Detalhe do Parceiro: detail partner ***nome do parceiro***  \n\n
 **Procurar Ajuda para Parceiros:**  \n
-
-Agenda para parceiros: agenda partner ***quarter***  \n
+___
+Agenda de treinamentos para parceiros: agenda partner ***quarter***  \n
+Produtos no estoque dos Distribuidores: estoque ***PID***  \n
 """
     
     return msg
