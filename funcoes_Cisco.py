@@ -279,6 +279,8 @@ def smartagenda(quarter):
 
     # Procura agenda de eventos
     # 26.7.2019
+    # Revisado para pesquisar por mes - 15.8.19
+    
     if quarter=="":
         return
 
@@ -299,18 +301,22 @@ def smartagenda(quarter):
 
     msg=""
     count=0
+
+    # procura primeiro por quarter, caso nao encontrado, por mes
     encontrado=0
     
     while (count<linhas):
 
+
+        # este 1o modulo procura por quarter
         # valida 1 linha por vez
         linha=data['rows'][count]
 
         try:
-            # acessa a primeira celula da linha (parceiro)
+            # acessa a primeira celula da linha (quarter)
             linha_agenda=linha['cells'][0]['value']
             
-            # gera a linha formatada caso parceiro encontrado
+            # gera a linha formatada caso quarter encontrado
             
             if quarter in linha_agenda.lower():
                 msg=msg+formata_agenda(linha)
@@ -322,6 +328,37 @@ def smartagenda(quarter):
                     
         # devolva negativa caso nada encontrado
     
+    # Roda este bloco caso nao tenha encontrado dados por quarter
+    # proxima pesquisa sera por mes
+
+    if encontrado==0:
+        # reinicia a contagem das linhas
+        count=0
+        while (count<linhas):
+
+            # este 2o modulo procura por quarter
+            # valida 1 linha por vez
+            linha=data['rows'][count]
+
+            try:
+                # acessa a segunda celula da linha (mes)
+                linha_agenda=linha['cells'][1]['value']
+                
+                # gera a linha formatada caso parceiro encontrado
+                
+                if quarter in linha_agenda.lower():
+                    msg=msg+formata_agenda(linha)
+                    encontrado=encontrado+1
+            except:
+                pass
+            count=count+1
+
+                        
+        # devolva negativa caso nada encontrado
+    
+
+
+
     if encontrado==0:
         msg="Agenda: Nenhum resultado encontrado.  "
 
@@ -956,7 +993,7 @@ def formata_agenda(dados):
     
     #monta a linha e imprime
     
-    msg=msg+("**Evento**: "+evento+" **Local:** "+localidade+" "+dia_programado+"  \n\n")
+    msg=msg+("**Evento**: "+evento+" **Local:** "+localidade+" "+dia_programado+"  \n")
  
 
     return msg
@@ -1084,7 +1121,7 @@ Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
 Detalhe do Parceiro: detail partner ***nome do parceiro***  \n\n
 **Procurar Ajuda para Parceiros:**  \n
 ___
-Agenda de treinamentos para parceiros: agenda partner ***quarter***  \n
+Agenda de treinamentos para parceiros: agenda partner ***quarter*** ou ***mês*** \n
 Produtos no estoque dos Distribuidores: estoque ***PID***  \n
 """
     
