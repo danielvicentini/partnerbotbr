@@ -48,6 +48,8 @@ def smartsheet(planilha):
         sheet="5371646502788"
     elif "estoque_Alca" in planilha:
         sheet="4103938677991300"
+    elif "estoque_Fabrica" in planilha:
+        sheet="4374521617639300"
 
     #planilha de managers
     url = "https://api.smartsheet.com/2.0/sheets/"+sheet
@@ -142,7 +144,7 @@ def smartestoque(pid):
         return
 
     # todas as planilhas de estoque disponiveis
-    estoques=("estoque_Alca","estoque_Comstor","estoque_Scan","estoque_Ingram")
+    estoques=("estoque_Alca","estoque_Comstor","estoque_Scan","estoque_Ingram","estoque_Fabrica")
 
     msg=""
     encontrado=0
@@ -179,7 +181,7 @@ def smartestoque(pid):
             
             # gera a linha formatada caso parceiro encontrado
             if pid in pn_dist:
-                msg=msg+formata_Estoque(linha)
+                msg=msg+formata_Estoque(linha,Dist)
                 encontrado=encontrado+1
             
             count=count+1
@@ -664,7 +666,7 @@ def formata_SEM(dados):
 
     return msg
 
-def formata_Estoque(dados):
+def formata_Estoque(dados,Dist):
 
 #monta linha do Estoque - DV 12-8-19
 
@@ -679,11 +681,18 @@ def formata_Estoque(dados):
         pid_name=dados['cells'][0]['value']
     except:
         pass
-    try:
-        pid_qtde=dados['cells'][7]['value']
-    except:
-        pass
-    
+    # se fabrica, qty esta'na coluna 1, demais coluna 7
+
+    if Dist!="estoque_Fabrica":
+        try:
+            pid_qtde=dados['cells'][7]['value']
+        except:
+            pass
+    elif Dist=="estoque_Fabrica":
+        try:
+            pid_qtde=dados['cells'][1]['value']
+        except:
+            pass    
     #monta a linha e imprime
     
     if pid_qtde>0: msg=msg+("**PID:**"+pid_name+" **Qty:**"+str(int(pid_qtde))+"  \n")
@@ -1068,7 +1077,7 @@ Procurar SE de Public Sector: seps partner ***nome do parceiro***  \n
 Procurar Certificado Meraki: meraki partner ***nome do parceiro***  \n
 Procurar Manager do Parceiro: manager partner ***nome do parceiro***  \n\n
 **Procurar Ajuda sobre os Parceiros:**  \n
-
+___
 Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
 Procurar Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
 Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
