@@ -13,6 +13,22 @@ def logica(comando,usermail):
     #Separa o comando por espacos
     #Primeiro item e'o comando em si, os demais sao parametros deste comando
     #tudo minusculo
+    
+    
+    # 21.10.19
+    # Novidade: Filtro de saia '|'
+    # filtra no final a saida caso este simbolo seja usando
+    
+    filtro=""
+    
+    if '|' in comando:
+        # divide a string em duas: antes e depois do simbolo |
+        # O parametro 0 e' a parte da esquerda que e' o comando a ser tratado
+        # O parametro 1 e' a parte da direita que representa o simbolo
+        cmd=comando.split("|")
+        filtro = cmd[1].strip()
+        comando=cmd[0]    
+    
     comando=comando.lower()
     
     # identifica e trata comandos relacionados a parceiros - palavra chave partner
@@ -91,6 +107,7 @@ def logica(comando,usermail):
                 
         
         # função prime - 16-7-2019
+        # versao alpha
 
         if "desconto prime" in comando:
 
@@ -144,5 +161,15 @@ def logica(comando,usermail):
         webexmsgRoomviaID(getwebexRoomID("log do partnerbot"),log)
     except:
         pass
+
+    # 21.10.19 filtra a saida caso filtro tenha sido pedido
+    if filtro != "":
+        linhas=msg.split("\n")
+        nova_msg=""
+        for b in range(len(linhas)):
+            if filtro in linhas[b]:
+                nova_msg=nova_msg+linhas[b]+"\n"
+        # altera msg somente com o filtro
+        msg=nova_msg        
 
     return msg
