@@ -1189,8 +1189,8 @@ def formata_PAM2(dados):
 
     # contatos do PAM e PSE
 
-    if pam!="": msg=msg+("**PAM:**"+smartcontact(str(pam)))
-    if pse!="": msg=msg+("**PSE:**"+smartcontact(str(pse)))
+    if pam!="": msg=msg+(smartcontact(str(pam)))
+    if pse!="": msg=msg+(smartcontact(str(pse)))
 
     return msg
 
