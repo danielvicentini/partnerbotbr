@@ -186,7 +186,7 @@ def smartse(parceiro,arquitetura,especialidade):
     count=0
     encontrado=0
 
-    msg=msg+("  \n**Partner:**"+parceiro.upper()+" **SE:** "+arquitetura.upper()+" \n")
+    msg=msg+("  \n**Partner:**"+parceiro.upper()+" **SE:** "+arquitetura.upper()+"  \n")
         
 
     while (count<linhas):
@@ -645,7 +645,7 @@ def smartps(parceiro):
     count=0
     encontrado=0
     
-    msg=msg+("  \n**Partner:**"+parceiro.upper()+" \n")
+    msg=msg+("  \n**Partner:**"+parceiro.upper()+"  \n")
         
 
     while (count<linhas):
