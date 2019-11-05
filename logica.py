@@ -1,4 +1,4 @@
-﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque
+﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque, smartaccess, smartcontact
 from prime import testa_prime,prime_produto,prime_servico
 from webexteams import getwebexRoomID, webexmsgRoomviaID
 
@@ -79,6 +79,7 @@ def logica(comando,usermail):
             if "meraki" in box:
                 msg=smartmeraki(parceiro)
 
+            
             # procura SE de PS
             if "seps" in box:
                 msg=smartps(parceiro)
@@ -104,7 +105,24 @@ def logica(comando,usermail):
                 msg=msg+smartse(parceiro,"dc",box)
                 msg=msg+smartse(parceiro,"sec",box)
                 
-                
+            # nova funcao smart - 05.11.19
+
+            if "newsearch" in box:
+                parametros=comando.split(" ")
+                msg=smartaccess(parametros[1],parametros)           
+        
+        
+        # procura Contato do time de canais
+        if "contato" in comando:
+            
+            # Transforma comando em parametros
+            parametros=comando.split()
+            # testa se tem o minimo de parametros
+            if len(parametros)==2:
+                contato=parametros[1]
+                msg=smartcontact(contato)
+
+        
         
         # função prime - 16-7-2019
         # versao alpha
@@ -167,7 +185,7 @@ def logica(comando,usermail):
         linhas=msg.split("\n")
         nova_msg=""
         for b in range(len(linhas)):
-            if filtro in linhas[b]:
+            if filtro.lower() in linhas[b].lower():
                 nova_msg=nova_msg+linhas[b]+"\n"
         # altera msg somente com o filtro
         msg=nova_msg        

@@ -50,6 +50,10 @@ def smartsheet(planilha):
         sheet="4103938677991300"
     elif "estoque_Fabrica" in planilha:
         sheet="4374521617639300"
+    elif "timePO" in planilha:
+        sheet="36190788315012"
+    elif "cobertura" in planilha:
+        sheet="3027412171679620"
 
     #planilha de managers
     url = "https://api.smartsheet.com/2.0/sheets/"+sheet
@@ -80,6 +84,79 @@ def smartsheet(planilha):
 
 #########################################################
 
+# nova funcao smart
+# todas em uma
+# 22.out.19
+
+def smartaccess (planilha,*args):
+
+    # Not working ainda
+    # Ja recebe dados, e' possível validar se a procura pede uma planilha existente
+    # falta tratar ainda cada pedido de comando
+    # validar se realmente este e' o caminho
+
+    print ("argumentos 1 %s %s",planilha, args)
+
+    # Unifica nesta funcao tudo relacionado com Smart
+    # 1) testa se o "dado" esta' relacionado a um smartsheet conhecido
+    # 2) busca o dado conforme as diferentes condicoes de pesquisa
+    # 3) formata
+    # 4) devolve o dado
+
+    # variaveis
+    found=0 # testa se planilha foi encontrada
+    parametros=len(args) # qtde de parametros variaveis
+    msg=""
+
+    # se o tipo de planilha nao for informado, encerra
+
+    # bloco 1: testa se e' um dado que existe informacao
+    # A lista de planilhas deve ser atualizada sempre que uma nova funcao e' criada
+
+    # primeiro testa se nome da planilha nao veio vazia
+    if planilha=="":
+        return "nenhum dado informado"
+ 
+    # checa se pedido esta' dentro da lista de planilhas
+    lista_planilhas = ("sem","pam","meraki","4PS","dap","agenda","solution","estoque","timePO","cobertura","se",)
+    for b in lista_planilhas:
+        if planilha in b:
+            found=1
+            break
+    
+    if found==0:
+        return "nao existe base de dados com este nome"
+
+    elif found==1:
+        # So' prossegue caso positivo
+        # dados comuns de todas as planilhas
+    
+        # planilha do smartsheet
+        # chama a funcao que busca planilha no smartsheet e devolve como JSON
+        data = smartsheet(planilha)
+
+        # aborta caso nao tenha sido possivel acessar smartsheet
+        if data=="erro":
+            msg="Erro de acesso\n"
+            return msg
+
+        # quantas linhas tem a planilha
+        linhas = data['totalRowCount']
+
+        # variaveis para o looping de leitura
+        msg=""
+        count=0
+        encontrado=0
+
+
+        # daqui para baixo e conforme a planilha
+
+
+    
+    # planilha a ser aberta
+    # chama a funcao que busca planilha no smartsheet e devolve como JSO
+    return msg
+
 
 def smartse(parceiro,arquitetura,especialidade):
 
@@ -109,6 +186,9 @@ def smartse(parceiro,arquitetura,especialidade):
     count=0
     encontrado=0
 
+    msg=msg+("  \n**Partner:**"+parceiro.upper()+" **SE:** "+arquitetura.upper()+" \n")
+        
+
     while (count<linhas):
 
         # valida 1 linha por vez
@@ -116,10 +196,11 @@ def smartse(parceiro,arquitetura,especialidade):
 
         # acessa a primeira celula da linha (parceiro)
         celulaparceiro=linha['cells'][0]['value']
+
         
         # gera a linha formatada caso parceiro encontrado
         if parceiro in celulaparceiro.lower():
-            msg=msg+("  \n**Partner:**"+celulaparceiro+"  \n")
+            
             msg=msg+formata_SE(linha)
             encontrado=encontrado+1
         
@@ -422,11 +503,67 @@ def smartdap(parceiro):
     return msg
 
 
+def smartcontact(contato):
+
+    # Procura infos de um contato Cisco
+    # 04.11.2019
+    if contato=="":
+        return
+
+    # planilha do smartsheet
+    # chama a funcao que busca planilha no smartsheet e devolve como JSON
+    data = smartsheet("timePO")
+
+    # aborta caso nao tenha sido possivel acessar smartsheet
+    if data=="erro":
+        msg="Erro de acesso\n"
+        return msg
+
+
+    # quantas linhas tem a planilha
+    linhas = data['totalRowCount']
+
+    # loop para procurar o pam e imprime
+
+    msg=""
+    count=0
+    encontrado=0
+    
+    while (count<linhas):
+
+        # valida 1 linha por vez
+        linha=data['rows'][count]
+
+        try:
+            # acessa CEC e nome do contato
+            celulacec=linha['cells'][0]['value']
+            celulanome=linha['cells'][1]['value']
+            # gera a linha formatada caso parceiro encontrado
+            
+            if  contato in celulacec.lower() or contato in celulanome.lower():
+                msg=msg+formata_contato(linha)
+                encontrado=encontrado+1
+        except:
+            pass
+        count=count+1
+
+                    
+        # devolva negativa caso nada encontrado
+    
+    if encontrado==0:
+        msg="Nenhum Contato"
+
+
+    return msg
+
+
+
 
 def smartmeraki(parceiro):
 
     # Procura SE Certificado Meraki do parceiro, retorna msg com dados ou resultado negativo caso nao encontrado
     # 19.7.2019
+    # 11.9.2019 - filtra por  BR
 
     if parceiro=="":
         return
@@ -508,6 +645,9 @@ def smartps(parceiro):
     count=0
     encontrado=0
     
+    msg=msg+("  \n**Partner:**"+parceiro.upper()+" \n")
+        
+
     while (count<linhas):
 
         # valida 1 linha por vez
@@ -600,7 +740,9 @@ def smartpam(parceiro):
 
     # planilha do smartsheet
     # chama a funcao que busca planilha no smartsheet e devolve como JSON
-    data = smartsheet("pam")
+    data = smartsheet("cobertura")
+    # planilha antiga
+    #data = smartsheet("pam")
 
 
     # aborta caso nao tenha sido possivel acessar smartsheet
@@ -630,7 +772,7 @@ def smartpam(parceiro):
         
         # gera a linha formatada caso parceiro encontrado
         if parceiro in celulaparceiro.lower():
-            msg=msg+formata_PAM(linha)
+            msg=msg+formata_PAM2(linha)
             encontrado=encontrado+1
         
         count=count+1
@@ -697,11 +839,50 @@ def formata_SEM(dados):
 
     #monta a linha e imprime
     
-    msg=msg+("**Manager:**"+semname+" **Partner:**"+semparceiro+" **Title:**"+semtitle+" "+semphone+" "+semmail+"  \n")
-    msg=msg+("**Region:**"+semregion+" "+semcity+"  \n\n")
+    msg=msg+("  \n **Manager:**"+semname+" **Partner:**"+semparceiro+" **Title:**"+semtitle+" "+semphone+" "+semmail+"  \n")
+    msg=msg+("**Region:**"+semregion+" "+semcity+"  \n")
 
 
     return msg
+
+def formata_contato(dados):
+
+#monta linha do Contato
+
+# zera variaveis
+    
+    msg=""
+    pocec=""
+    poname=""
+    pocell=""
+    potitle=""
+    
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        pocec=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        poname=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        pocell=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        potitle=dados['cells'][3]['value']
+    except:
+        pass
+    
+    #monta a linha e imprime
+    
+    msg=msg+("**Contato:**"+poname+" **Title:**"+potitle+" "+pocell+" "+pocec+"@cisco.com  \n")
+    
+
+    return msg
+
+
 
 def formata_Estoque(dados,Dist):
 
@@ -749,7 +930,8 @@ def formata_SE_Meraki(dados):
     senome=""
     sesobrenome=""
     semail=""
-    
+    secountry=""
+
     # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
     try:
         separceiro=dados['cells'][0]['value']
@@ -767,11 +949,17 @@ def formata_SE_Meraki(dados):
         semail=dados['cells'][12]['value']
     except:
         pass
+    try:
+        secountry=dados['cells'][11]['value']
+    except:
+        pass
  
+
     #monta a linha e imprime
     
-    msg=msg+("**Certified SE:**"+senome+" "+sesobrenome+"** Partner:**"+separceiro+" "+semail+"  \n\n")
+    msg=msg+("**Certified SE:**"+senome+" "+sesobrenome+"** Partner:**"+separceiro+" "+secountry+" "+semail+"  \n\n")
    
+    
     return msg
 
 def formata_SE_PS(dados):
@@ -811,8 +999,8 @@ def formata_SE_PS(dados):
  
     #monta a linha e imprime
     
-    msg=msg+("**Parceiro:**"+separceiro+" **Nome:**"+senome+" "+semail+" "+selocalidade+"  \n")
-    msg=msg+("**Arquiteturas que cobre:"+secompet+"  \n\n")
+    msg=msg+("**Nome:**"+senome+" "+semail+" "+selocalidade+"  \n")
+    msg=msg+("**Arquiteturas que cobre:**"+secompet+"  \n")
    
     return msg
 
@@ -850,7 +1038,7 @@ def formata_solution(dados):
     
     msg=msg+("**Parceiro:**"+vparceiro+" **Vertical:**"+vertical+"  \n")
     msg=msg+("**Nome da oferta:** "+vsolution+"  \n")
-    msg=msg+("**Descrição da oferta:**"+vdescription+"  \n\n")
+    msg=msg+("**Descrição da oferta:**"+vdescription+"  \n")
    
     return msg
 
@@ -955,6 +1143,58 @@ def formata_PAM(dados):
     return msg
 
 
+def formata_PAM2(dados):
+
+#monta linha do PAM - update de 04.11.19
+
+# zera variaveis
+    
+    msg=""
+    pparceiro=""
+    preg=""
+    ptouch=""
+    pfocus=""
+    pam=""
+    pse=""
+  
+    # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
+    try:
+        pparceiro=dados['cells'][0]['value']
+    except:
+        pass
+    try:
+        preg=dados['cells'][1]['value']
+    except:
+        pass
+    try:
+        ptouch=dados['cells'][2]['value']
+    except:
+        pass
+    try:
+        pfocus=dados['cells'][3]['value']
+    except:
+        pass
+    try:
+        pam=dados['cells'][5]['value']
+    except:
+        pass
+    try:
+        pse=dados['cells'][6]['value']
+    except:
+        pass
+
+    #monta a linha e imprime
+    
+    msg=msg+("  \n **Parceiro:** "+pparceiro+" "+preg+" **Touch:** "+ptouch+" "+pfocus+"  \n")
+
+    # contatos do PAM e PSE
+
+    if pam!="": msg=msg+("**PAM:**"+smartcontact(str(pam)))
+    if pse!="": msg=msg+("**PSE:**"+smartcontact(str(pse)))
+
+    return msg
+
+
 def formata_agenda(dados):
 
 #agenda de eventos para parceiros
@@ -979,15 +1219,15 @@ def formata_agenda(dados):
     except:
         pass
     try:
-        evento=dados['cells'][2]['value']
+        evento=dados['cells'][3]['value']
     except:
         pass
     try:
-        dia_programado=dados['cells'][3]['value']
+        dia_programado=dados['cells'][4]['value']
     except:
         pass
     try:
-        localidade=dados['cells'][4]['value']
+        localidade=dados['cells'][5]['value']
     except:
         pass
     
@@ -1086,16 +1326,17 @@ def formata_DAP(dados):
     for b in dapcontacts:
         if b!="":
             contacts=contacts+b+' '
-
+            
+    msg=msg+("**PAM:** %s** DAP do Distribuidor:**%s \n" % (dappam, dapdist))
+    msg=msg+("**Especializacoes:**%s \n" % (compet))
+    msg=msg+("**Contato no Dist:**%s \n" % (contacts))
+    return msg
+"""
     msg=msg+("\n**Parceiro:** "+dapparceiro+": **Certificacao:**"+dapcert+"  \n")
     msg=msg+("**PAM:** "+dappam+"** DAP do Distribuidor:**"+dapdist+"  \n")
     msg=msg+("**Especializacoes:**"+compet+"  \n")
     msg=msg+("**Contato no Dist:**"+contacts+"  \n")
-
-    return msg
-
-
-
+"""
 
 #########################################################
 ## FUNCOES API Suporte Cisco
@@ -1115,10 +1356,10 @@ Procurar Certificado Meraki: meraki partner ***nome do parceiro***  \n
 Procurar Manager do Parceiro: manager partner ***nome do parceiro***  \n\n
 **Procurar Ajuda sobre os Parceiros:**  \n
 ___
-Procurar PAM do parceiro: pam partner ***nome do parceiro***  \n
+Procurar PAM/PSE do parceiro: pam partner ***nome do parceiro***  \n
 Procurar Parceiro por solução: solution partner ***nome da vertical*** ou ***nome do parceiro***  \n
 Procurar Distribuidor do parceiro: dap partner ***nome do parceiro***  \n\n
-Detalhe do Parceiro: detail partner ***nome do parceiro***  \n\n
+Detalhe consolidado do Parceiro: detail partner ***nome do parceiro***  \n\n
 **Procurar Ajuda para Parceiros:**  \n
 ___
 Agenda de treinamentos para parceiros: agenda partner ***quarter*** ou ***mês*** \n
