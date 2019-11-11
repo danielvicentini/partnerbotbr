@@ -23,7 +23,8 @@ def smartsheet(planilha):
     elif "dna" in planilha:
         sheet="835914437027716"
     elif "collab" in planilha:
-        sheet="2994385685112708"
+        #sheet="2994385685112708"
+        sheet="5687045101250436"
     elif "dc" in planilha:
         sheet="5992706112546692"
     elif "sem" in planilha:
@@ -66,7 +67,11 @@ def smartsheet(planilha):
         'Postman-Token': "50a08645-32c6-4b43-9dcd-fb4db45c942e"
         }
 
-    
+    #### DANIEL 11.11.2019
+    #### planilhas existentes não estão voltando com erro!
+    ### checar, collab foi tracada e ainda sim rotina funcionou até onde pode, depois deu erro
+
+
     response = requests.request("GET", url, data=payload, headers=headers)
     
     #pega conteudo pleno da planilha
@@ -839,8 +844,8 @@ def formata_SEM(dados):
 
     #monta a linha e imprime
     
-    msg=msg+("  \n **Manager:**"+semname+" **Partner:**"+semparceiro+" **Title:**"+semtitle+" "+semphone+" "+semmail+"  \n")
-    msg=msg+("**Region:**"+semregion+" "+semcity+"  \n")
+    msg=msg+("  \n **Manager:**"+str(semname)+" **Partner:**"+str(semparceiro)+" **Title:**"+str(semtitle)+" "+str(semphone)+" "+str(semmail)+"  \n")
+    msg=msg+("**Region:**"+str(semregion)+" "+str(semcity)+"  \n")
 
 
     return msg
@@ -1059,23 +1064,23 @@ def formata_SE(dados):
 
     # tenta pegar valores. Tenta pois se a celula estiver vazia, dará erro de conteúdo, por isto o 'try'
     try:
-        separceiro=dados['cells'][0]['value']
+        separceiro=str(dados['cells'][0]['value'])
     except:
         pass
     try:
-        sename=dados['cells'][1]['value']
+        sename=str(dados['cells'][1]['value'])
     except:
         pass
     try:
-        setel=dados['cells'][2]['value']
+        setel=str(dados['cells'][2]['value'])
     except:
         pass
     try:
-        semail=dados['cells'][3]['value']
+        semail=str(dados['cells'][3]['value'])
     except:
         pass
     try:
-        secomp=dados['cells'][4]['value']
+        secomp=str(dados['cells'][4]['value'])
     except:
         pass
     
