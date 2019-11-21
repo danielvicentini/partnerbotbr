@@ -1,6 +1,8 @@
 ﻿import requests
 import os
-import json 
+import json
+# para gerar arquivos arquivos aleatorios 
+import uuid
 
 #########################################################
 ## FUNCOES SMARTSHEET
@@ -69,7 +71,7 @@ def smartsheet(planilha):
 
     #### DANIEL 11.11.2019
     #### planilhas existentes não estão voltando com erro!
-    ### checar, collab foi tracada e ainda sim rotina funcionou até onde pode, depois deu erro
+    ### checar, collab foi trocada e ainda sim rotina funcionou até onde pode, depois deu erro
 
 
     response = requests.request("GET", url, data=payload, headers=headers)
@@ -84,10 +86,115 @@ def smartsheet(planilha):
     return json_res
 
 
+def listasheet(planilha):
+
+    # 21.11.19
+    # Este codigo devolve a planilha completa no formato xls
+
+    #token esta na variável de ambiente
+    smartsheet_token=os.environ['SMART_TOKEN']
+
+    sheet=""
+
+    # devolve erro caso variavel de ambiente do token nao encontrada
+    if smartsheet_token=="":
+        return "erro"
+
+    if "sec" in planilha:
+        sheet="1219329522984836"
+    elif "dna" in planilha:
+        sheet="835914437027716"
+    elif "collab" in planilha:
+        #sheet="2994385685112708"
+        sheet="5687045101250436"
+    elif "dc" in planilha:
+        sheet="5992706112546692"
+    elif "sem" in planilha:
+        sheet="2210243842205572"
+    elif "pam" in planilha:
+        sheet="8872345856173956"
+    elif "meraki" in planilha:
+        sheet="6475499091322756"
+    elif "4ps" in planilha:
+        sheet="1400202272761732"
+    elif "dap" in planilha:
+        sheet="7330531516934020"
+    elif "solution" in planilha:
+        sheet="6200566423545732"
+    elif "agenda" in planilha:
+        sheet="7416587629160324"
+    elif "estoque_Comstor" in planilha:
+        sheet="6726686227097476"
+    elif "estoque_Scan" in planilha:
+        sheet="3981179922737028"
+    elif "estoque_Ingram" in planilha:
+        sheet="5371646502788"
+    elif "estoque_Alca" in planilha:
+        sheet="4103938677991300"
+    elif "estoque_Fabrica" in planilha:
+        sheet="4374521617639300"
+    elif "timePO" in planilha:
+        sheet="36190788315012"
+    elif "cobertura" in planilha:
+        sheet="3027412171679620"
+    
+    if sheet=="":
+        msg= "erro"
+        return msg
+
+    #planilha de managers
+    url = "https://api.smartsheet.com/2.0/sheets/"+sheet
+
+    payload = ""
+    headers = {
+        'Authorization': "Bearer "+ smartsheet_token,
+        'Accept': "application/vnd.ms-excel",
+        'cache-control': "no-cache",
+        'Postman-Token': "50a08645-32c6-4b43-9dcd-fb4db45c942e"
+        }
+
+    #### DANIEL 11.11.2019
+    #### planilhas existentes não estão voltando com erro!
+    ### checar, collab foi trocada e ainda sim rotina funcionou até onde pode, depois deu erro
+
+
+    response = requests.request("GET", url, data=payload, headers=headers)
+    
+    #pega conteudo pleno da planilha
+    if response.status_code==200:
+        #conteudo do smartsheet
+        arquivo = response.content
+        #nome do arquivo gerado aleatoriamente
+        nome_arquivo = str(planilha)+"-"+str(uuid.uuid4().hex)+".xlsx"
+        f = open(nome_arquivo, "wb")
+        f.write(arquivo)
+        f.close()
+        msg=nome_arquivo
+
+    else:
+    # devolve erro caso nao consiga acessar smartsheet
+        msg="erro"
+
+    return msg
+
+
+
+
 #########################################################
 ## FUNCOES de Busca de informacoes
 
 #########################################################
+
+# chama planilha e salva xls - alpha
+# 21.11.19
+
+def smartlist(planilha):
+
+    msg=""
+
+    msg=listasheet(planilha)
+
+    return msg
 
 # nova funcao smart
 # todas em uma
