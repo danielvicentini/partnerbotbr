@@ -1,4 +1,4 @@
-﻿from funcoes_Cisco import ajuda, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque, smartaccess, smartcontact
+﻿from funcoes_Cisco import ajuda, smartlist, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque, smartaccess, smartcontact
 from prime import testa_prime,prime_produto,prime_servico
 from webexteams import getwebexRoomID, webexmsgRoomviaID
 
@@ -46,6 +46,9 @@ def logica(comando,usermail):
         #parceiro=parceiro.rstrip()
 
     
+    # 21.11.19
+    # variavel arquivo para o caso do bot devolver arquivos anexados
+    arquivo=""
     msg=""
 	
     # chamadas de acordo com os parametros
@@ -122,8 +125,20 @@ def logica(comando,usermail):
                 contato=parametros[1]
                 msg=smartcontact(contato)
 
-        
-        
+        # lista_xls
+        if "lista" in comando:        
+          # Transforma comando em parametros
+            parametros=comando.split()
+            # testa se tem o minimo de parametros
+            if len(parametros)==2:
+                planilha=parametros[1]
+                arquivo=smartlist(planilha)
+
+                if arquivo !="erro":
+                    msg = "Planilha "+arquivo+ " criada"
+                else:
+                    msg = "Erro na criacao da planilha"
+
         # função prime - 16-7-2019
         # versao alpha
 
@@ -176,7 +191,7 @@ def logica(comando,usermail):
     # tenta logar tudo na sala "log do partnerbot"
     try:
         log="user:"+usermail+" comando:"+comando
-        webexmsgRoomviaID(getwebexRoomID("log do partnerbot"),log)
+        webexmsgRoomviaID(getwebexRoomID("log do partnerbot"),log,"")
     except:
         pass
 
@@ -190,4 +205,5 @@ def logica(comando,usermail):
         # altera msg somente com o filtro
         msg=nova_msg        
 
-    return msg
+    return msg,arquivo
+    #return msg
