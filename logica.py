@@ -136,7 +136,7 @@ def logica(comando,usermail):
 
                 if arquivo !="erro":
                     msg = "Planilha "+arquivo+ " criada"
-                else:
+                elif arquivo == "erro":
                     msg = "Erro na criacao da planilha"
 
         # função prime - 16-7-2019

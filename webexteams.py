@@ -282,10 +282,12 @@ def webexmsgRoomviaID(sala,msg,arquivo):
 	# Manda msg para 1 sala especifica informada via sala=roomID,  retorna sucesso ou erro
     # 21.11.19 - caso tenha arquivo na mensagem, vai inclui-lo
     try:
-        if arquivo!="":
-            api.messages.create(sala,None,None,None, msg, arquivo)
+        if arquivo!="" or arquivo!=None:
+            # convert string para list
+            n_arquivo=list(arquivo.split("\n"))
+            api.messages.create(sala,None,None,None, msg, n_arquivo)
             msg="ok"
-        elif arquivo=="":
+        elif arquivo=="" or arquivo==None:
             api.messages.create(sala,None,None,None, msg)
             msg="ok"
     except:
