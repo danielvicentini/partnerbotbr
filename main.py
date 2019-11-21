@@ -7,6 +7,16 @@ import logging
 import json 
 import os
 
+# Testa existencia do Webhook. Caso negativo, cria
+msg=ValidaWebhook(webhook_name,webhook_url)
+# Imprime erro caso validacao do Webhook nao funcionou
+if msg=="erro":
+    print ("Erro de Webhook")
+
+
+formato = "w"
+
+
 # http server
 class S(BaseHTTPRequestHandler):
     def _set_response(self):
@@ -53,14 +63,11 @@ def trataPOST(content):
             sala=webextalk[1]
 
             # executa a logica
-            # 21.11.12 - agora pode enviar tb arquivo em anexo
-
-            #msg=logica(mensagem,usermail)
-            msg,arquivo=logica(mensagem,usermail)
+            msg=logica(mensagem,usermail)
         
             # Envia resposta na sala apropriada
-            #webexmsgRoomviaID(sala,msg)
-            webexmsgRoomviaID(sala,msg,arquivo)
+            webexmsgRoomviaID(sala,msg)
+
     except:
             print("POST nao reconhecido")
             pass
@@ -83,15 +90,6 @@ def run(server_class=HTTPServer, handler_class=S, port=int(os.getenv('PORT',8080
         logging.info('Stopping httpd...\n')
 
 
-# Testa existencia do Webhook. Caso negativo, cria
-msg=ValidaWebhook(webhook_name,webhook_url)
-# Imprime erro caso validacao do Webhook nao funcionou
-if msg=="erro":
-    print ("Erro de Webhook")
-
-
-formato = "w"
-
 
 if formato=="c":
 
@@ -112,8 +110,7 @@ if formato=="c":
         webexconsole(box)
 
         # logica para usuarios
-        msg,arquivo=logica(box,usermail)
-        #msg=logica(box,usermail)
+        msg=logica(box,usermail)
         print (msg)
 
 elif formato=='w':
@@ -122,4 +119,4 @@ elif formato=='w':
 
 else:
 
-    print ("nenhum formato selecionado. Selecione (c) para console de teste ou (w) para producao")
+    print ("nenhum formato selecionado. Selecione (c) para teste e (w) para producao")
