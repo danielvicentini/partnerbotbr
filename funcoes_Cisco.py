@@ -148,32 +148,37 @@ def listasheet(planilha):
     payload = ""
     headers = {
         'Authorization': "Bearer "+ smartsheet_token,
+        # este Accept é que diz ao Smartsheet o tipo de conteudo a retornar (xls, csv ou pdf)
         'Accept': "application/vnd.ms-excel",
         'cache-control': "no-cache",
         'Postman-Token': "50a08645-32c6-4b43-9dcd-fb4db45c942e"
         }
 
-    #### DANIEL 11.11.2019
-    #### planilhas existentes não estão voltando com erro!
-    ### checar, collab foi trocada e ainda sim rotina funcionou até onde pode, depois deu erro
-
 
     response = requests.request("GET", url, data=payload, headers=headers)
     
-    #pega conteudo pleno da planilha
+    ### gera nome de arquivo aleatorio e inclui o conteudo do resultado da pesquisa
+    
+
     if response.status_code==200:
         #conteudo do smartsheet
         arquivo = response.content
-        #nome do arquivo gerado aleatoriamente
+
+        #nome do arquivo = nome da base + hexa unico
         nome_arquivo = str(planilha)+"-"+str(uuid.uuid4().hex)+".xlsx"
+    
+        # este bloco grava o arquivo binario
         f = open(nome_arquivo, "wb")
         f.write(arquivo)
         f.close()
+
         msg=nome_arquivo
 
     else:
     # devolve erro caso nao consiga acessar smartsheet
         msg="erro"
+
+    # retorna ou nome do arquivo ou erro
 
     return msg
 

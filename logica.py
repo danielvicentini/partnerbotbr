@@ -1,5 +1,10 @@
-﻿from funcoes_Cisco import ajuda, smartlist, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque, smartaccess, smartcontact
+﻿# funcoes smartsheet
+from funcoes_Cisco import ajuda, smartlist, smartmanager, smartmeraki, smartpam, smartse, autorizauser, smartps, smartdap, smartsolution, smartagenda, smartestoque, smartaccess, smartcontact
+
+# funcoes desconto prime
 from prime import testa_prime,prime_produto,prime_servico
+
+# funcoes webexteams
 from webexteams import getwebexRoomID, webexmsgRoomviaID
 
 def logica(comando,usermail):
@@ -110,7 +115,7 @@ def logica(comando,usermail):
                 msg=msg+smartse(parceiro,"sec",box)
                 
             # nova funcao smart - 05.11.19
-
+            # WIP
             if "newsearch" in box:
                 parametros=comando.split(" ")
                 msg=smartaccess(parametros[1],parametros)           
@@ -127,6 +132,7 @@ def logica(comando,usermail):
                 msg=smartcontact(contato)
 
         # lista_xls
+        # chama funcao que exporta planilha, caso chamado seja via teams, envia o anexo na resposta
         if "lista" in comando:        
           # Transforma comando em parametros
             parametros=comando.split()

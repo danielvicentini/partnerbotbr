@@ -282,20 +282,22 @@ def webexmsgRoomviaID(sala,msg,arquivo):
 
 	# Manda msg para 1 sala especifica informada via sala=roomID,  retorna sucesso ou erro
     # 21.11.19 - caso tenha arquivo na mensagem, vai inclui-lo
+
     try:
+        # envia arquivo caso positivo
         if arquivo!="":
             # convert string para list
             n_arquivo=list(arquivo.split("\n"))
             api.messages.create(sala,None,None,None, msg, n_arquivo)
             msg="ok"
-            
-        elif arquivo=="":
+        # envia msg somente caso nao tenha arquivo ou produto de erro    
+        elif arquivo=="" or arquivo=="erro":
             api.messages.create(sala,None,None,None, msg)
             msg="ok"
             
     except:
         msg="erro"
-        print ("ERRO")
+        print ("Erro no envio da msg via webexteams")
         pass
 
     return msg
