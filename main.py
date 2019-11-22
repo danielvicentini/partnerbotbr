@@ -90,7 +90,7 @@ if msg=="erro":
     print ("Erro de Webhook")
 
 
-formato = "c"
+formato = "w"
 
 
 if formato=="c":
