@@ -286,12 +286,16 @@ def webexmsgRoomviaID(sala,msg,arquivo):
     try:
         # envia arquivo caso positivo
         if arquivo!="":
-            # convert string para list
-            n_arquivo=list(arquivo.split("\n"))
-            api.messages.create(sala,None,None,None, msg, n_arquivo)
-            msg="ok"
-        # envia msg somente caso nao tenha arquivo ou produto de erro    
-        elif arquivo=="" or arquivo=="erro":
+            
+            # envia msg somente caso nao tenha produto de erro no arquivo
+            if arquivo!="erro":
+                # convert string para list
+                n_arquivo=list(arquivo.split("\n"))
+                api.messages.create(sala,None,None,None, msg, n_arquivo)
+                msg="ok"
+
+        # Envia mensagem de texto somente para os casos onde nao ha arquivo anexo ou erro no arquivo    
+        if arquivo=="" or arquivo==None or arquivo=="erro":
             api.messages.create(sala,None,None,None, msg)
             msg="ok"
             
