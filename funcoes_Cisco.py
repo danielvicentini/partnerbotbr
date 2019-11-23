@@ -21,22 +21,23 @@ def smartsheet(planilha):
         return "erro"
 
     if "sec" in planilha:
-        sheet="1219329522984836"
+        sheet="1114107521853316"
     elif "dna" in planilha:
-        sheet="835914437027716"
+        sheet="6189882692396932"
     elif "collab" in planilha:
         #sheet="2994385685112708"
         sheet="5687045101250436"
     elif "dc" in planilha:
-        sheet="5992706112546692"
+        sheet="1158637742778244"
     elif "sem" in planilha:
         sheet="2210243842205572"
-    elif "pam" in planilha:
-        sheet="8872345856173956"
+    # deprecada. Substituida pela planilha "cobertura"
+    #elif "pam" in planilha:
+    #    sheet="8872345856173956"
     elif "meraki" in planilha:
         sheet="6475499091322756"
     elif "4PS" in planilha:
-        sheet="1400202272761732"
+        sheet="3938082878711684"
     elif "dap" in planilha:
         sheet="7330531516934020"
     elif "solution" in planilha:
@@ -101,22 +102,23 @@ def listasheet(planilha):
         return "erro"
 
     if "sec" in planilha:
-        sheet="1219329522984836"
+        sheet="1114107521853316"
     elif "dna" in planilha:
-        sheet="835914437027716"
+        sheet="6189882692396932"
     elif "collab" in planilha:
         #sheet="2994385685112708"
         sheet="5687045101250436"
     elif "dc" in planilha:
-        sheet="5992706112546692"
+        sheet="1158637742778244"
     elif "sem" in planilha:
         sheet="2210243842205572"
-    elif "pam" in planilha:
-        sheet="8872345856173956"
+    # deprecada. Substituida pela planilha "cobertura"
+    #elif "pam" in planilha:
+    #    sheet="8872345856173956"
     elif "meraki" in planilha:
         sheet="6475499091322756"
     elif "4ps" in planilha:
-        sheet="1400202272761732"
+        sheet="3938082878711684"
     elif "dap" in planilha:
         sheet="7330531516934020"
     elif "solution" in planilha:
