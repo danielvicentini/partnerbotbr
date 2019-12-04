@@ -1,5 +1,7 @@
+import os
+
 # Ponha aqui os dados do seu robozinho
-bottoken='YTg5YjMwODMtYjliMS00YjM3LTlmMjYtNzlhZWU1MDE0NDlhODIwYzMwODctZDVj_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f'
+bottoken=os.environ['WEBEXTEAMS_TOKEN']
 botmail="partnerbotbr@webex.bot"
 
 # Ponha aqui os dados do seu Webhook
